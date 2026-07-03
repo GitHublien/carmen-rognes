@@ -89,8 +89,24 @@
     padding: 14px; margin: 14px 0; box-shadow: 0 2px 8px rgba(90,60,20,0.15);
   }
   .fiche h3 { font-size: 1.3rem; margin-bottom: 6px; }
-  .fiche ol { padding-left: 22px; font-size: 1.02rem; }
-  .fiche li { margin: 7px 0; }
+  .ligne-fiche {
+    background: #fffdf7; border: 1px solid #e5d9be; border-left: 6px solid;
+    border-radius: 10px; padding: 10px 14px; margin: 10px 0;
+  }
+  .ligne-fiche .moment { font-size: 1.18rem; font-weight: bold; color: var(--rouge); margin-bottom: 4px; }
+  .ligne-fiche .lf { margin: 6px 0; font-size: 1.02rem; }
+  .tag {
+    display: inline-block; color: white; font-weight: bold; font-size: 0.78rem;
+    padding: 2px 10px; border-radius: 10px; margin-right: 6px; white-space: nowrap;
+  }
+  .tag.entree { background: var(--jardin); }
+  .tag.sortie { background: var(--cour); }
+  .tag.note { background: var(--or); }
+  #btn-details {
+    display: block; margin: 16px auto 0; font-family: inherit;
+    font-size: 1rem; font-weight: bold; background: var(--rouge); color: white;
+    border: none; border-radius: 22px; padding: 10px 22px; cursor: pointer;
+  }
 
   /* ---------- Titres d'actes ---------- */
   h2.acte {
@@ -461,6 +477,51 @@
   ];
 
   // ================== FICHES RÉSUMÉES ==================
+  // ================== FEUILLES SIMPLES (format Savane) : MOMENT / ENTRÉE / SORTIE / NOTES ==================
+  const FEUILLES = {
+    carmen: [
+      [`(4) Chœur des cigarières`, `Pendant ce numéro : tu gagnes ta place cachée côté JARDIN, sans être vue`, ``, `INVISIBLE jusqu'au bout — personne ne doit te voir avant ton entrée`],
+      [`(5) Ton entrée + Habanera`, `Quand l'orchestre repart TRÈS FORT après « Mais nous ne voyons pas la Carmencita » → tu te MONTRES côté JARDIN, vers les hommes`, `Tu restes`, `« Fais ta belle » ! Récitatif aux hommes, 1ᵉʳ couplet sans José. 2ᵉ couplet : le jeu AU MILIEU — « il est là ! » tu vas vers lui, tu le saisis pour danser, il refuse. À la fin, sur « Mais si je t'aime » : il fait « non » de la tête → tu repars EN COURANT vers jardin, comme si tu partais… mais tu restes (fausse sortie)`],
+      [`(6) LA ROSE 🌹`, `Tu es encore là (fausse sortie)`, `Juste après le jet : tu files par l'ESCALIER → dans LE PUBLIC, sur la gauche vers le mur, jusqu'à ta cachette (les loges ?) — presque en courant, très contente de toi`, `Tu ôtes délicatement la rose de tes cheveux, tu regardes les hommes, tu t'approches dangereusement de José (au milieu)… et SUR L'ACCORD SEC : tu la lui JETTES. Jet court, vers la poitrine — la rose doit RESTER SUR SCÈNE !`],
+      [`(8) L'arrestation 🪢`, `José vient te chercher DANS LE PUBLIC et te ramène à la corde`, `Tu remontes l'ESCALIER traînée par José, juste avant la fin de la musique`, `DÉBATS-TOI tout le long — c'est ça le spectacle ! Cheveux en bataille (tu t'es battue). Devant Zuniga : soutiens son regard méchant`],
+      [`(10) Séguedille`, `Déjà en scène, attachée, AU MILIEU avec José`, `Après les applaudissements, pendant la phrase du narrateur : tu VOIS Zuniga revenir → tu T'ENFUIS à JARDIN (derrière les chœurs)`, `Séduction MAXIMALE (« J'irai danser la séguedille… chez mon ami Lillas Pastia »). Jeu de la corde en liberté (le taquiner, le traîner un peu, comme lui). Il te détache sur « Près des remparts de Séville »`],
+      [`Actes 2, 3 et 4`, `🚧 Pas encore mis à jour — la suite arrive (même lien)`, ``, ``]
+    ],
+    jose: [
+      [`(5) Habanera — ta 1ʳᵉ apparition`, `SEUL, à COUR, sur « L'oiseau que tu croyais surprendre » (2ᵉ couplet)`, `Tu restes`, `Soldat de service : tu surveilles la foule, tu NE LA REGARDES PAS. Quand elle vient vers toi (« il est là ! ») : avance un peu, le jeu se joue AU MILIEU — elle te saisit pour danser, tu REFUSES, tu retournes à cour. Ensuite : raide, garde-à-vous, un ou deux regards volés maximum. À la fin, sur « Mais si je t'aime » : elle vient → avance un peu au milieu, fais « NON » de la tête`],
+      [`(6) LA ROSE 🌹`, `Tu es AU MILIEU`, `Tu restes — seul en scène`, `Elle te jette la rose SUR L'ACCORD → joue L'ENVOÛTEMENT : surpris, tu la regardes… et d'un coup DIFFÉREMMENT, comme si un sort était lancé. Puis : ramasse-la, sens-la UNE fois, reste dans les vapes, reprends doucement tes esprits. Sur « s'il est vraiment des sorcières » : va vers JARDIN, vers là où elle a disparu`],
+      [`(6 bis) Micaëla arrive`, `Elle t'appelle depuis COUR : « José ! »`, ``, `La rose encore à la main → FOURRE-LA VITE dans ta poche (elle ne doit pas la voir !) puis va vers elle`],
+      [`(7) Duo « Parle-moi de ma mère »`, `En scène`, `Vous sortez ENSEMBLE à COUR, assez vite`, `En liberté avec Cécilia — les gestes suivent le texte (la lettre, la bourse, le baiser de la mère). S'asseoir possible (chaise ? genou ?)`],
+      [`(8) L'arrestation 🪢`, `Sur « Au diable tout ce bavardage ! » : tu reviens à COUR, vers Zuniga`, `Tu descends DANS LE PUBLIC chercher Carmen`, `Zuniga te passe LA CORDE. Repère Carmen dans le public, montre-la du doigt (« là-bas ! »), descends, ramène-la de force — elle se débat — et remonte l'escalier juste avant la fin de la musique. Présente-la à Zuniga`],
+      [`(10) Séguedille`, `En scène — tu gardes Carmen, AU MILIEU`, `Zuniga t'emmène en prison, par le col, à COUR, sur la musique`, `Elle te séduit, tu t'énerves (« Tais-toi ! »)… et tu la DÉTACHES sur « Près des remparts de Séville ». Après les applaudissements : elle s'enfuit — reste AU CENTRE, la corde vide dans les mains, comme un idiot. Zuniga, choqué, t'attache MAINS DANS LE DOS avec la même corde`],
+      [`Actes 2, 3 et 4`, `🚧 Pas encore mis à jour — la suite arrive (même lien)`, ``, ``]
+    ],
+    micaela: [
+      [`(6 bis) Ton arrivée`, `À COUR, un peu AVANT ta phrase : tu entres, tu le cherches, tu LE VOIS → « José ! »`, ``, `Il vient vers toi : « Me voici ! — Quelle joie ! — C'est votre mère qui m'envoie »`],
+      [`(7) Duo « Parle-moi de ma mère »`, `En scène`, `Vous sortez ENSEMBLE à COUR, assez vite`, `En liberté avec Valentin — les gestes suivent le texte : tu donnes LA LETTRE, LA BOURSE, et tu transmets LE BAISER de sa mère (« vraiment, je n'ose… »)`],
+      [`(22) Ton air (acte 3)`, `À JARDIN, côté « montagne »`, ``, `🚧 Acte 3 pas encore mis à jour`],
+      [`Actes 2, 3 et 4`, `🚧 Pas encore mis à jour — la suite arrive (même lien)`, ``, ``]
+    ],
+    escamillo: [
+      [`(14) Couplets du Toréador`, `Par l'ESCALIER À COUR, juste après l'annonce du narrateur — arrivée triomphale, acclamé`, ``, `🚧 Acte 2 pas encore mis à jour en détail`],
+      [`(23) Duo avec José (acte 3)`, `Tu surgis à JARDIN, là où on ne t'attend pas`, ``, `🚧 Pas encore mis à jour (accessoire : le chapeau troué ?)`],
+      [`(26) La Marche (acte 4)`, `Cortège avec Carmen par l'ESCALIER — la parade`, ``, `🚧 Pas encore mis à jour`]
+    ],
+    zuniga: [
+      [`(1) Scène et chœur — MORALÈS 🎬`, `Quand le chœur attaque « Sur la place, chacun passe » → tu SURGIS à COUR`, `Dernier « Drôles de gens ! » → FREEZE 2-3 secondes → tu sors à COUR (le freeze peut déclencher les applaudissements)`, `Traverse tout le plateau, regard TRÈS dédaigneux (le soldat-bourgeois), place-toi à JARDIN. « Drôles de gens » : prends le public à témoin. « À la porte du corps de garde » : redeviens le vrai adjudant-chef. Va-et-vient possibles`],
+      [`(8) L'arrestation — ZUNIGA 🪢`, `Tu reviens te placer à JARDIN (signe de changement de personnage : képi, veste ? à discuter)`, `Après avoir laissé la garde à José : tu passes devant lui et tu sors à COUR`, `Main en visière, montre le public du doigt, va-et-vient jardin ⟷ cour, perturbé par les deux camps du chœur. 🪢 LA CORDE au ceinturon ! Sur « Au diable tout ce bavardage ! » : José revient → passe-lui LA CORDE. Quand il ramène Carmen : hochement de tête (« c'est bon, tu la tiens »), tape sur l'épaule, regard méchant à Carmen`],
+      [`(10) Fin de la Séguedille`, `TOUT DE SUITE après les applaudissements, PENDANT LA PHRASE DU NARRATEUR : tu reviens à COUR`, `Tu emmènes José par le col, à COUR, sur la musique — il y a le temps`, `Carmen s'enfuit en te voyant. José, la corde vide à la main : CHOQUÉ. Reprends LA MÊME CORDE et attache-le MAINS DANS LE DOS (comme des menottes)`],
+      [`Actes 2, 3 et 4 (N°14, N°18…)`, `🚧 Pas encore mis à jour — la suite arrive (même lien)`, ``, ``]
+    ],
+    frasquita: [
+      [`Actes 2 et 3 (N°12, 14, 18, 19, 20, 24)`, `🚧 Pas encore mis à jour — la mise en espace de tes numéros arrive (même lien, recharge la page)`, ``, ``]
+    ],
+    mercedes: [
+      [`Actes 2 et 3 (N°12, 14, 18, 19, 20, 24)`, `🚧 Pas encore mis à jour — la mise en espace de tes numéros arrive (même lien, recharge la page)`, ``, ``]
+    ]
+  };
+
+  // (ancien format détaillé, conservé pour mémoire — plus affiché)
   const FICHES = {
     carmen: [
       `<b>N°5</b> — INVISIBLE jusqu'au « Mais nous ne voyons pas la Carmencita ». TOP : <b>quand l'orchestre repart très fort</b> (c'est écrit « ENTRÉE DE CARMEN » dans la partition, p.40) → SE MONTRER à JARDIN, « faire sa belle »`,
@@ -680,32 +741,64 @@
       </div>`).join('');
 
   // ================== CHOIX ET FILTRE ==================
+  let roleCourant = 'tous';
+  let detailsVisibles = false;
+
+  function ligneFeuille(r, couleur) {
+    return `
+      <div class="ligne-fiche" style="border-left-color:${couleur}">
+        <div class="moment">🎵 ${r[0]}</div>
+        ${r[1] ? `<div class="lf"><span class="tag entree">➡ ENTRÉE</span>${r[1]}</div>` : ''}
+        ${r[2] ? `<div class="lf"><span class="tag sortie">SORTIE ⬅</span>${r[2]}</div>` : ''}
+        ${r[3] ? `<div class="lf"><span class="tag note">📝 NOTES</span>${r[3]}</div>` : ''}
+      </div>`;
+  }
+
   function choisir(role) {
+    roleCourant = role;
+    if (role === 'tous') detailsVisibles = false;
     const barre = document.getElementById('barre-choix');
     const zone = document.getElementById('fiche-perso');
+    const contenu = document.getElementById('contenu');
     if (role === 'tous') {
       barre.style.display = 'none';
       zone.innerHTML = '';
-    } else {
-      const p = PERSOS[role];
-      barre.style.display = 'flex';
-      barre.style.borderBottomColor = p.couleur;
-      document.getElementById('barre-img').src = `avatar-${role}.jpg`;
-      document.getElementById('barre-img').style.borderColor = p.couleur;
-      document.getElementById('barre-txt').innerHTML = `${p.affiche} <span style="font-weight:normal;font-style:italic;">— ${p.nom}</span>`;
-      document.getElementById('barre-txt').style.color = p.couleur;
-      zone.innerHTML = `
-        <div class="fiche" style="border-color:${p.couleur}">
-          <h3 style="color:${p.couleur}">📌 TON RÉSUMÉ, ${p.affiche.toUpperCase()}</h3>
-          <ol>${FICHES[role].map(l => `<li>${l}</li>`).join('')}</ol>
-        </div>`;
-      zone.scrollIntoView({ behavior: 'smooth' });
+      contenu.style.display = '';
+      document.querySelectorAll('[data-persos]').forEach(el => el.classList.remove('cache'));
+      return;
     }
-    document.querySelectorAll('[data-persos]').forEach(el => {
-      if (role === 'tous') { el.classList.remove('cache'); return; }
-      const liste = el.dataset.persos.split(' ');
-      el.classList.toggle('cache', !liste.includes(role));
-    });
+    const p = PERSOS[role];
+    barre.style.display = 'flex';
+    barre.style.borderBottomColor = p.couleur;
+    document.getElementById('barre-img').src = `avatar-${role}.jpg`;
+    document.getElementById('barre-img').style.borderColor = p.couleur;
+    document.getElementById('barre-txt').innerHTML = `${p.affiche} <span style="font-weight:normal;font-style:italic;">— ${p.nom}</span>`;
+    document.getElementById('barre-txt').style.color = p.couleur;
+    zone.innerHTML = `
+      <div class="fiche" style="border-color:${p.couleur}">
+        <h3 style="color:${p.couleur}">🎤 ${p.affiche.toUpperCase()} — ${p.nom}</h3>
+        <div style="font-style:italic; color:#6b5a48; margin-bottom:4px;">Ta feuille d'entrées et sorties, dans l'ordre du spectacle :</div>
+        ${(FEUILLES[role] || []).map(r => ligneFeuille(r, p.couleur)).join('')}
+        <div style="background:#fff3cd; border:2px solid #b8860b; border-radius:10px; padding:8px 12px; margin-top:10px; font-size:0.95rem;">
+          ⚠️ <b>RÈGLE :</b> il n'y a PAS de sortie à jardin (c'est le mur) — « jardin » = tu passes DERRIÈRE les chœurs. La seule vraie sortie du plateau : <b>l'escalier, à cour</b>.
+        </div>
+        <button id="btn-details" onclick="basculerDetails()">${detailsVisibles ? 'Masquer les détails' : '📖 Voir les détails (schémas, textes du narrateur)'}</button>
+      </div>`;
+    if (detailsVisibles) {
+      contenu.style.display = '';
+      document.querySelectorAll('[data-persos]').forEach(el => {
+        const liste = el.dataset.persos.split(' ');
+        el.classList.toggle('cache', !liste.includes(role));
+      });
+    } else {
+      contenu.style.display = 'none';
+    }
+    zone.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function basculerDetails() {
+    detailsVisibles = !detailsVisibles;
+    choisir(roleCourant);
   }
 
   // ================== NOTES ==================
@@ -715,6 +808,10 @@
     if (sauvegarde) zone.innerHTML = sauvegarde;
     zone.addEventListener('input', () => localStorage.setItem(cle, zone.innerHTML));
   });
+
+  // ================== LIEN DIRECT PAR PERSONNE (ex. …/#carmen) ==================
+  const hash = location.hash.replace('#', '');
+  if (PERSOS[hash] && hash !== 'narrateur') choisir(hash);
 </script>
 
 </body>
