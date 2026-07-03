@@ -811,6 +811,17 @@
   let carteIndex = 0;
   let modeFeuille = 'cartes';
 
+  // Schéma associé à chaque carte de la feuille (même index que FEUILLES)
+  const PLANS_FEUILLE = {
+    carmen:    [null, 'n5', 'n6', 'n8', 'n10', null],
+    jose:      ['n5', 'n6', 'n6bis', null, 'n8', 'n10', null],
+    micaela:   ['n6bis', null, 'n22', null],
+    escamillo: ['n14', 'n23', 'n26'],
+    zuniga:    ['n1', 'n8', 'n10', null],
+    frasquita: [null],
+    mercedes:  [null]
+  };
+
   function ligneTableau(r) {
     const reste = r[2] && /^Tu restes/i.test(r[2]);
     let rows = '';
@@ -830,10 +841,15 @@
     let corps = '';
     if (modeFeuille === 'cartes') {
       const r = feuille[carteIndex];
+      const pid = (PLANS_FEUILLE[roleCourant] || [])[carteIndex];
+      const schema = (pid && PLANS[pid])
+        ? `<div class="plan-scene" style="padding:6px 8px 2px; background:#fdf9ee;"><svg viewBox="0 25 400 240" xmlns="http://www.w3.org/2000/svg">${basePlan()}${PLANS[pid].map(fleche).join('')}</svg></div>`
+        : '';
       corps = `
         <div class="carte-moment" style="border-color:${p.couleur}">
           <div class="cm-titre" style="background:${p.couleur}">🎵 ${r[0]}</div>
           <table class="cm-table">${ligneTableau(r)}</table>
+          ${schema}
         </div>
         <div class="cm-nav">
           <button onclick="cartePrecedente()" ${carteIndex === 0 ? 'disabled' : ''}>◀ Avant</button>
