@@ -759,7 +759,8 @@
   // Met les directions en GROS jetons colorés dans le texte
   function flashDirections(txt) {
     return txt
-      .replace(/\bDANS LE PUBLIC\b|\bLE PUBLIC\b/gi, `<span class="dir public">LE PUBLIC 👥</span>`)
+      .replace(/\bDANS LE PUBLIC\b/gi, `dans <span class="dir public">LE PUBLIC 👥</span>`)
+      .replace(/\bLE PUBLIC\b(?!\s*👥)/gi, `<span class="dir public">LE PUBLIC 👥</span>`)
       .replace(/\bCOUR\b/gi, `<span class="dir cour">COUR ➡</span>`)
       .replace(/\bJARDIN\b/gi, `<span class="dir jardin">⬅ JARDIN</span>`)
       .replace(/\bL'ESCALIER\b|\bESCALIER\b/gi, `<span class="dir escalier">🪜 ESCALIER</span>`)
