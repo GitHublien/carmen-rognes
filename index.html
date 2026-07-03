@@ -99,9 +99,21 @@
     display: inline-block; color: white; font-weight: bold; font-size: 0.78rem;
     padding: 2px 10px; border-radius: 10px; margin-right: 6px; white-space: nowrap;
   }
-  .tag.entree { background: var(--jardin); }
-  .tag.sortie { background: var(--cour); }
+  .tag.entree { background: #1565c0; }
+  .tag.sortie { background: #6a1b9a; }
+  .tag.reste { background: #37474f; }
   .tag.note { background: var(--or); }
+  .dir {
+    display: inline-block; font-weight: 900; color: white;
+    padding: 2px 11px; border-radius: 9px; margin: 1px 2px;
+    font-size: 1.02em; letter-spacing: 1px;
+  }
+  .dir.cour { background: var(--cour); }
+  .dir.jardin { background: var(--jardin); }
+  .dir.escalier { background: #9e7c0c; }
+  .dir.public { background: #c2185b; }
+  .dir.milieu { background: var(--rouge); }
+  .ligne-fiche .lf.mouvement { font-size: 1.08rem; }
   #btn-details {
     display: block; margin: 16px auto 0; font-family: inherit;
     font-size: 1rem; font-weight: bold; background: var(--rouge); color: white;
@@ -489,7 +501,7 @@
     ],
     jose: [
       [`(5) Habanera — ta 1ʳᵉ apparition`, `SEUL, à COUR, sur « L'oiseau que tu croyais surprendre » (2ᵉ couplet)`, `Tu restes`, `Soldat de service : tu surveilles la foule, tu NE LA REGARDES PAS. Quand elle vient vers toi (« il est là ! ») : avance un peu, le jeu se joue AU MILIEU — elle te saisit pour danser, tu REFUSES, tu retournes à cour. Ensuite : raide, garde-à-vous, un ou deux regards volés maximum. À la fin, sur « Mais si je t'aime » : elle vient → avance un peu au milieu, fais « NON » de la tête`],
-      [`(6) LA ROSE 🌹`, `Tu es AU MILIEU`, `Tu restes — seul en scène`, `Elle te jette la rose SUR L'ACCORD → joue L'ENVOÛTEMENT : surpris, tu la regardes… et d'un coup DIFFÉREMMENT, comme si un sort était lancé. Puis : ramasse-la, sens-la UNE fois, reste dans les vapes, reprends doucement tes esprits. Sur « s'il est vraiment des sorcières » : va vers JARDIN, vers là où elle a disparu`],
+      [`(6) LA ROSE 🌹`, `Tu es AU MILIEU`, `Tu restes — Carmen vient de partir, tu es seul avec la rose`, `Elle te jette la rose SUR L'ACCORD → joue L'ENVOÛTEMENT : surpris, tu la regardes… et d'un coup DIFFÉREMMENT, comme si un sort était lancé. Puis : ramasse-la, sens-la UNE fois, reste dans les vapes, reprends doucement tes esprits. Sur « s'il est vraiment des sorcières » : va vers JARDIN, vers là où elle a disparu`],
       [`(6 bis) Micaëla arrive`, `Elle t'appelle depuis COUR : « José ! »`, ``, `La rose encore à la main → FOURRE-LA VITE dans ta poche (elle ne doit pas la voir !) puis va vers elle`],
       [`(7) Duo « Parle-moi de ma mère »`, `En scène`, `Vous sortez ENSEMBLE à COUR, assez vite`, `En liberté avec Cécilia — les gestes suivent le texte (la lettre, la bourse, le baiser de la mère). S'asseoir possible (chaise ? genou ?)`],
       [`(8) L'arrestation 🪢`, `Sur « Au diable tout ce bavardage ! » : tu reviens à COUR, vers Zuniga`, `Tu descends DANS LE PUBLIC chercher Carmen`, `Zuniga te passe LA CORDE. Repère Carmen dans le public, montre-la du doigt (« là-bas ! »), descends, ramène-la de force — elle se débat — et remonte l'escalier juste avant la fin de la musique. Présente-la à Zuniga`],
@@ -744,13 +756,25 @@
   let roleCourant = 'tous';
   let detailsVisibles = false;
 
+  // Met les directions en GROS jetons colorés dans le texte
+  function flashDirections(txt) {
+    return txt
+      .replace(/\bDANS LE PUBLIC\b|\bLE PUBLIC\b/gi, `<span class="dir public">LE PUBLIC 👥</span>`)
+      .replace(/\bCOUR\b/gi, `<span class="dir cour">COUR ➡</span>`)
+      .replace(/\bJARDIN\b/gi, `<span class="dir jardin">⬅ JARDIN</span>`)
+      .replace(/\bL'ESCALIER\b|\bESCALIER\b/gi, `<span class="dir escalier">🪜 ESCALIER</span>`)
+      .replace(/\bAU MILIEU\b|\bAU CENTRE\b/gi, `<span class="dir milieu">AU MILIEU</span>`);
+  }
   function ligneFeuille(r, couleur) {
+    const reste = r[2] && /^Tu restes/i.test(r[2]);
     return `
       <div class="ligne-fiche" style="border-left-color:${couleur}">
         <div class="moment">🎵 ${r[0]}</div>
-        ${r[1] ? `<div class="lf"><span class="tag entree">➡ ENTRÉE</span>${r[1]}</div>` : ''}
-        ${r[2] ? `<div class="lf"><span class="tag sortie">SORTIE ⬅</span>${r[2]}</div>` : ''}
-        ${r[3] ? `<div class="lf"><span class="tag note">📝 NOTES</span>${r[3]}</div>` : ''}
+        ${r[1] ? `<div class="lf mouvement"><span class="tag entree">➡ ENTRÉE</span>${flashDirections(r[1])}</div>` : ''}
+        ${r[2] ? (reste
+          ? `<div class="lf mouvement"><span class="tag reste">✋ TU RESTES EN SCÈNE</span>${flashDirections(r[2].replace(/^Tu restes( en scène)?( —)?/i, ''))}</div>`
+          : `<div class="lf mouvement"><span class="tag sortie">SORTIE 🚪</span>${flashDirections(r[2])}</div>`) : ''}
+        ${r[3] ? `<div class="lf"><span class="tag note">📝</span>${flashDirections(r[3])}</div>` : ''}
       </div>`;
   }
 
