@@ -549,7 +549,7 @@
       [`(26) La Marche (acte 4)`, `Cortège avec Carmen par l'ESCALIER — la parade`, ``, `🚧 Pas encore mis à jour`]
     ],
     zuniga: [
-      [`(1) Scène et chœur — MORALÈS 🎬`, `Quand le chœur attaque « Sur la place, chacun passe » → tu SURGIS à COUR`, `Dernier « Drôles de gens ! » → FREEZE 2-3 secondes → tu sors à COUR (le freeze peut déclencher les applaudissements)`, `Traverse tout le plateau, regard TRÈS dédaigneux (le soldat-bourgeois), place-toi à JARDIN. « Drôles de gens » : prends le public à témoin. « À la porte du corps de garde » : redeviens le vrai adjudant-chef. Va-et-vient possibles`],
+      [`(1) Scène et chœur — MORALÈS 🎬`, `Quand le chœur attaque « Sur la place, chacun passe » → tu SURGIS à COUR`, `Dernier « Drôles de gens ! » → FREEZE 2-3 secondes → tu sors à COUR`, `Traverse tout le plateau, regard TRÈS dédaigneux (le soldat-bourgeois), place-toi à JARDIN. « Drôles de gens » : prends le public à témoin. « À la porte du corps de garde » : redeviens le vrai adjudant-chef. Va-et-vient possibles. LE FREEZE de la fin : immobilité totale 2-3 secondes sur l'accord final — c'est la « photo » de ton personnage, ça marque la fin du numéro… et ça peut déclencher les applaudissements`],
       [`(8) L'arrestation — ZUNIGA 🪢`, `Tu reviens te placer à JARDIN (signe de changement de personnage : képi, veste ? à discuter)`, `Après avoir laissé la garde à José : tu passes devant lui et tu sors à COUR`, `Main en visière, montre le public du doigt, va-et-vient jardin ⟷ cour, perturbé par les deux camps du chœur. 🪢 LA CORDE au ceinturon ! Sur « Au diable tout ce bavardage ! » : José revient → passe-lui LA CORDE. Quand il ramène Carmen : hochement de tête (« c'est bon, tu la tiens »), tape sur l'épaule, regard méchant à Carmen`],
       [`(10) Fin de la Séguedille`, `TOUT DE SUITE après les applaudissements, PENDANT LA PHRASE DU NARRATEUR : tu reviens à COUR`, `Tu emmènes José par le col, à COUR, sur la musique — il y a le temps`, `Carmen s'enfuit en te voyant. José, la corde vide à la main : CHOQUÉ. Reprends LA MÊME CORDE et attache-le MAINS DANS LE DOS (comme des menottes)`],
       [`Actes 2, 3 et 4 (N°14, N°18…)`, `🚧 Pas encore mis à jour — la suite arrive (même lien)`, ``, ``]
@@ -801,10 +801,10 @@
       <div class="ligne-fiche" style="border-left-color:${couleur}">
         <div class="moment">🎵 ${r[0]}</div>
         ${r[1] ? `<div class="lf mouvement"><span class="tag entree">➡ ENTRÉE</span>${flashDirections(r[1])}</div>` : ''}
+        ${r[3] ? `<div class="lf"><span class="tag note">📝</span>${flashDirections(r[3])}</div>` : ''}
         ${r[2] ? (reste
           ? `<div class="lf mouvement"><span class="tag reste">✋ TU RESTES EN SCÈNE</span>${flashDirections(r[2].replace(/^Tu restes( en scène)?( —)?/i, ''))}</div>`
           : `<div class="lf mouvement"><span class="tag sortie">SORTIE 🚪</span>${flashDirections(r[2])}</div>`) : ''}
-        ${r[3] ? `<div class="lf"><span class="tag note">📝</span>${flashDirections(r[3])}</div>` : ''}
       </div>`;
   }
 
@@ -815,10 +815,10 @@
     const reste = r[2] && /^Tu restes/i.test(r[2]);
     let rows = '';
     if (r[1]) rows += `<tr><th class="th-entree">➡<br>ENTRÉE</th><td>${flashDirections(r[1])}</td></tr>`;
+    if (r[3]) rows += `<tr><th class="th-note">📝<br>NOTES</th><td>${flashDirections(r[3])}</td></tr>`;
     if (r[2]) rows += reste
       ? `<tr><th class="th-reste">✋<br>TU RESTES</th><td>${flashDirections(r[2].replace(/^Tu restes( en scène)?( —)?/i, '')) || 'En scène !'}</td></tr>`
       : `<tr><th class="th-sortie">🚪<br>SORTIE</th><td>${flashDirections(r[2])}</td></tr>`;
-    if (r[3]) rows += `<tr><th class="th-note">📝<br>NOTES</th><td>${flashDirections(r[3])}</td></tr>`;
     return rows;
   }
 
