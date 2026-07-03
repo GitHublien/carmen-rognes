@@ -892,14 +892,11 @@
         <div style="background:#fff3cd; border:2px solid #b8860b; border-radius:10px; padding:8px 12px; margin-top:12px; font-size:0.95rem;">
           ⚠️ <b>RÈGLE :</b> il n'y a PAS de sortie à jardin (c'est le mur) — « jardin » = tu passes DERRIÈRE les chœurs. La seule vraie sortie du plateau : <b>l'escalier, à cour</b>.
         </div>
-        <button id="btn-details" onclick="basculerDetails()">${detailsVisibles ? 'Masquer les détails' : '📖 Voir les détails (schémas, textes du narrateur)'}</button>
+        <button id="btn-details" onclick="basculerDetails()">${detailsVisibles ? '✖ Masquer le déroulé' : '📜 Voir le déroulé en entier'}</button>
       </div>`;
     if (detailsVisibles) {
       contenu.style.display = '';
-      document.querySelectorAll('[data-persos]').forEach(el => {
-        const liste = el.dataset.persos.split(' ');
-        el.classList.toggle('cache', !liste.includes(roleCourant));
-      });
+      document.querySelectorAll('[data-persos]').forEach(el => el.classList.remove('cache'));
     } else {
       contenu.style.display = 'none';
     }
