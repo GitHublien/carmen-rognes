@@ -757,7 +757,7 @@
       const coupure = s.coupure ? `<div class="coupure">✂️ ${s.coupure}</div>` : '';
       const bordure = PERSOS[s.persos[0]].couleur;
       html += `
-        <div class="carte-scene" data-persos="${s.persos.join(' ')}" style="border-left-color:${bordure}">
+        <div class="carte-scene" id="detail-${s.note}" data-persos="${s.persos.join(' ')}" style="border-left-color:${bordure}">
           <div class="entete-carte">${avatarsDe(s.persos.slice(0, 3), 76)}
             <div><span class="num">${s.num}</span><span class="noms-persos">${nomsDe(s.persos)}</span></div>
           </div>
@@ -821,6 +821,17 @@
     frasquita: [null],
     mercedes:  [null]
   };
+  // Carte détaillée du déroulé associée à chaque carte de la feuille
+  const DETAILS_FEUILLE = {
+    carmen:    [null, 'n5', 'n6', 'n8', 'n10', null],
+    jose:      ['n5', 'n6', 'n6bis', 'n7', 'n8', 'n10', null],
+    micaela:   ['n6bis', 'n7', 'n22', null],
+    escamillo: ['n14', 'n23', 'n26'],
+    zuniga:    ['n1', 'n8', 'n10', null],
+    frasquita: [null],
+    mercedes:  [null]
+  };
+  let detailMoment = false;
 
   function ligneTableau(r) {
     const reste = r[2] && /^Tu restes/i.test(r[2]);
@@ -855,8 +866,20 @@
           <button onclick="cartePrecedente()" ${carteIndex === 0 ? 'disabled' : ''}>◀ Avant</button>
           <span class="cm-compteur">${carteIndex + 1} / ${feuille.length}</span>
           <button onclick="carteSuivante()" ${carteIndex === feuille.length - 1 ? 'disabled' : ''}>Suivant ▶</button>
-        </div>
-        <button class="cm-mode" onclick="basculerMode()">📋 Voir toute ma feuille d'un coup</button>`;
+        </div>`;
+      const did = (DETAILS_FEUILLE[roleCourant] || [])[carteIndex];
+      const srcDetail = did ? document.getElementById('detail-' + did) : null;
+      if (srcDetail) {
+        corps += `<button class="cm-mode" onclick="voirDetailMoment()">${detailMoment ? '✖ Masquer les détails de ce moment' : '🔎 Tous les détails de ce moment'}</button>`;
+        if (detailMoment) {
+          let htmlD = srcDetail.outerHTML
+            .replace(/ data-persos="[^"]*"/, '')
+            .replace(/ id="detail-[^"]*"/, '')
+            .replace(/<div class="notes"[\s\S]*?<\/div>/, '');
+          corps += `<div style="margin-top:10px">${htmlD}</div>`;
+        }
+      }
+      corps += `<button class="cm-mode" onclick="basculerMode()">📋 Voir toute ma feuille d'un coup</button>`;
     } else {
       corps = feuille.map(r => ligneFeuille(r, p.couleur)).join('') +
         `<button class="cm-mode" onclick="basculerMode()">🎴 Revenir au mode carte par carte</button>`;
@@ -897,6 +920,7 @@
       return;
     }
     carteIndex = 0;
+    detailMoment = false;
     const p = PERSOS[role];
     barre.style.display = 'flex';
     barre.style.borderBottomColor = p.couleur;
@@ -909,13 +933,18 @@
 
   function carteSuivante() {
     const feuille = FEUILLES[roleCourant] || [];
-    if (carteIndex < feuille.length - 1) { carteIndex++; majFiche(false); }
+    if (carteIndex < feuille.length - 1) { carteIndex++; detailMoment = false; majFiche(false); }
   }
   function cartePrecedente() {
-    if (carteIndex > 0) { carteIndex--; majFiche(false); }
+    if (carteIndex > 0) { carteIndex--; detailMoment = false; majFiche(false); }
   }
   function basculerMode() {
     modeFeuille = modeFeuille === 'cartes' ? 'liste' : 'cartes';
+    detailMoment = false;
+    majFiche(false);
+  }
+  function voirDetailMoment() {
+    detailMoment = !detailMoment;
     majFiche(false);
   }
   function basculerDetails() {
