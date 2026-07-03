@@ -135,6 +135,8 @@
   .th-sortie { background: #6a1b9a; }
   .th-reste { background: #37474f; }
   .th-note { background: #9e7c0c; }
+  .th-narr { background: #880e4f; }
+  .tag.narr { background: #880e4f; }
   .cm-nav { display: flex; align-items: center; gap: 10px; margin: 14px 0 4px; }
   .cm-nav button {
     flex: 1; font-family: inherit; font-size: 1.25rem; font-weight: bold;
@@ -430,13 +432,17 @@
 
     { type: 'alerte', texte: `🚧 ATTENTION : À PARTIR D'ICI, CE N'EST PAS ENCORE MIS À JOUR 🚧<br><span style="font-weight:normal;font-size:0.95rem;">La mise en espace est réglée jusqu'à la Séguedille (ci-dessus). Ce qui suit — actes 2, 3 et 4 — n'est qu'une première ébauche : ne rien apprendre de définitif ici, la suite arrive.</span>` },
 
-    { type: 'acte', titre: 'ENTRACTE — puis ACTE 2' },
+    { type: 'acte', titre: '🎼 ORCHESTRE seul (pas de mise en scène) — puis ACTE 2' },
 
-    { type: 'scene', num: 'N°12 — Chanson bohème', persos: ['carmen', 'frasquita', 'mercedes'],
-      quand: `Entrées du trio : côtés à décider`,
-      jetons: [],
-      action: `<b>Carmen</b>, <b>Frasquita</b> et <b>Mercédès</b> — la taverne.`,
-      note: 'n12' },
+    { type: 'scene', num: 'N°12 — Chanson bohème 💃', persos: ['carmen', 'frasquita', 'mercedes'],
+      quand: `Après la musique d'orchestre qui ouvre l'acte 2 — chez Lillas Pastia`,
+      jetons: [['cour', 'ELLES ENTRENT TOUTES LES TROIS ENSEMBLE À COUR ➡']],
+      action: `Première entrée de <b>Frasquita</b> (Maud) et <b>Mercédès</b> (Agnès), avec <b>Carmen</b>. Placement : <b>Mercédès à JARDIN, Carmen AU MILIEU, Frasquita à COUR</b>.`,
+      jeu: [`Pendant l'intro musicale : elles se placent <b>en dansant déjà un peu</b> — un <b>petit jeu entre elles trois</b> (à régler ensemble — idées en discussion)`,
+            `« Les tringles des sistres tintaient… » : elles racontent l'histoire — l'éclat métallique, les zingarellas, le tambour de basque, les guitares forcenées`,
+            `<b>La danse MONTE avec la musique</b> — « ardente, folle, fiévreuse » — jusqu'au tourbillon des « tra la la » de la fin`,
+            `⚠️ L'arrivée de ZUNIGA à la fin de la musique : à décider (idées en discussion)`],
+      plan: 'n12', note: 'n12' },
 
     { type: 'narrateur', texte: `Soudain, on entend des exclamations qui viennent de l'extérieur de la taverne. On acclame Escamillo, le torero qui s'est couvert de gloire aux dernières courses de Grenade.`, apres: 'après le N°12' },
 
@@ -462,7 +468,7 @@
       action: `<b>Zuniga</b> vient courtiser <b>Carmen</b> — José s'emporte, les contrebandiers le désarment. Le Dancaïre est chanté par les ténors du chœur.`,
       plan: 'n18', note: 'n18' },
 
-    { type: 'acte', titre: 'ENTRACTE — puis ACTE 3' },
+    { type: 'acte', titre: '🎼 ORCHESTRE seul (pas de mise en scène) — puis ACTE 3' },
 
     { type: 'scene', num: 'N°19 — Solistes et chœur', persos: ['carmen', 'jose', 'frasquita', 'mercedes'],
       quand: `En place`,
@@ -500,7 +506,7 @@
       action: `Tout le monde — le final de l'acte 3.`,
       note: 'n24' },
 
-    { type: 'acte', titre: 'ENTRACTE — puis ACTE 4' },
+    { type: 'acte', titre: '🎼 ORCHESTRE seul (pas de mise en scène) — puis ACTE 4' },
 
     { type: 'info', texte: `<b>N°25 — Chœur.</b> Rien à jouer.`, note: 'n25' },
 
@@ -524,17 +530,18 @@
       [`(4) Chœur des cigarières`, `Pendant ce numéro : tu gagnes ta place cachée côté JARDIN, sans être vue`, ``, `INVISIBLE jusqu'au bout — personne ne doit te voir avant ton entrée`],
       [`(5) Ton entrée + Habanera`, `Quand l'orchestre repart TRÈS FORT après « Mais nous ne voyons pas la Carmencita » → tu te MONTRES côté JARDIN, vers les hommes`, `Tu restes`, `« Fais ta belle » ! Récitatif aux hommes, 1ᵉʳ couplet sans José. 2ᵉ couplet : le jeu AU MILIEU — « il est là ! » tu vas vers lui, tu le saisis pour danser, il refuse. À la fin, sur « Mais si je t'aime » : il fait « non » de la tête → tu repars EN COURANT vers jardin, comme si tu partais… mais tu restes (fausse sortie)`],
       [`(6) LA ROSE 🌹`, `Tu es encore là (fausse sortie)`, `Juste après le jet : tu files par l'ESCALIER → dans LE PUBLIC, sur la gauche vers le mur, jusqu'à ta cachette (les loges ?) — presque en courant, très contente de toi`, `Tu ôtes délicatement la rose de tes cheveux, tu regardes les hommes, tu t'approches dangereusement de José (au milieu)… et SUR L'ACCORD SEC : tu la lui JETTES. Jet court, vers la poitrine — la rose doit RESTER SUR SCÈNE !`],
-      [`(8) L'arrestation 🪢`, `José vient te chercher DANS LE PUBLIC et te ramène à la corde`, `Tu remontes l'ESCALIER traînée par José, juste avant la fin de la musique`, `DÉBATS-TOI tout le long — c'est ça le spectacle ! Cheveux en bataille (tu t'es battue). Devant Zuniga : soutiens son regard méchant`],
-      [`(10) Séguedille`, `Déjà en scène, attachée, AU MILIEU avec José`, `Après les applaudissements, pendant la phrase du narrateur : tu VOIS Zuniga revenir → tu T'ENFUIS à JARDIN (derrière les chœurs)`, `Séduction MAXIMALE (« J'irai danser la séguedille… chez mon ami Lillas Pastia »). Jeu de la corde en liberté (le taquiner, le traîner un peu, comme lui). Il te détache sur « Près des remparts de Séville »`],
-      [`Actes 2, 3 et 4`, `🚧 Pas encore mis à jour — la suite arrive (même lien)`, ``, ``]
+      [`(8) L'arrestation 🪢`, `José vient te chercher DANS LE PUBLIC et te ramène à la corde`, `Tu remontes l'ESCALIER traînée par José, juste avant la fin de la musique`, `DÉBATS-TOI tout le long — c'est ça le spectacle ! Cheveux en bataille (tu t'es battue). Devant Zuniga : soutiens son regard méchant`, `Pendant ta remontée à l'escalier : « Carmen, qui a déclenché la bagarre, puis marqué au couteau le visage de son adversaire, doit être conduite en prison. Don José est chargé de l'y escorter. »`],
+      [`(10) Séguedille`, `Déjà en scène, attachée, AU MILIEU avec José`, `Après les applaudissements, pendant la phrase du narrateur : tu VOIS Zuniga revenir → tu T'ENFUIS à JARDIN (derrière les chœurs)`, `Séduction MAXIMALE (« J'irai danser la séguedille… chez mon ami Lillas Pastia »). Jeu de la corde en liberté (le taquiner, le traîner un peu, comme lui). Il te détache sur « Près des remparts de Séville »`, `Juste après les applaudissements — c'est PENDANT cette phrase que tu t'enfuis : « Subjugué, Don José laisse volontairement échapper sa prisonnière et sera condamné à la prison pour cette faute. Deux mois plus tard, nous retrouvons Carmen dans la taverne de Lilas Pastias, repaire notoire de contrebandiers. »`],
+      [`(12) Chanson bohème — l'acte 2 commence 💃`, `Vous entrez TOUTES LES TROIS ensemble à COUR — avec Frasquita et Mercédès`, ``, `Placement pendant l'intro : Mercédès (Agnès) à JARDIN, TOI AU MILIEU, Frasquita (Maud) à COUR. Vous vous placez en dansant déjà un peu — petit jeu entre vous trois (à régler ensemble). « Les tringles des sistres tintaient… » : la danse MONTE avec la musique, « ardente, folle, fiévreuse », jusqu'au tourbillon des « tra la la »`, `Juste après votre danse : « Soudain, on entend des exclamations qui viennent de l'extérieur de la taverne. On acclame Escamillo, le torero qui s'est couvert de gloire aux dernières courses de Grenade. »`],
+      [`La suite des actes 2, 3 et 4`, `🚧 Pas encore mis à jour — la suite arrive (même lien)`, ``, ``]
     ],
     jose: [
       [`(5) Habanera — ta 1ʳᵉ apparition`, `SEUL, à COUR, sur « L'oiseau que tu croyais surprendre » (2ᵉ couplet)`, `Tu restes`, `Soldat de service : tu surveilles la foule, tu NE LA REGARDES PAS. Quand elle vient vers toi (« il est là ! ») : avance un peu, le jeu se joue AU MILIEU — elle te saisit pour danser, tu REFUSES, tu retournes à cour. Ensuite : raide, garde-à-vous, un ou deux regards volés maximum. À la fin, sur « Mais si je t'aime » : elle vient → avance un peu au milieu, fais « NON » de la tête`],
       [`(6) LA ROSE 🌹`, `Tu es AU MILIEU`, `Tu restes — Carmen vient de partir, tu es seul avec la rose`, `Elle te jette la rose SUR L'ACCORD → joue L'ENVOÛTEMENT : surpris, tu la regardes… et d'un coup DIFFÉREMMENT, comme si un sort était lancé. Puis : ramasse-la, sens-la UNE fois, reste dans les vapes, reprends doucement tes esprits. Sur « s'il est vraiment des sorcières » : va vers JARDIN, vers là où elle a disparu`],
       [`(6 bis) Micaëla arrive`, `Elle t'appelle depuis COUR : « José ! »`, ``, `La rose encore à la main → FOURRE-LA VITE dans ta poche (elle ne doit pas la voir !) puis va vers elle`],
       [`(7) Duo « Parle-moi de ma mère »`, `En scène`, `Vous sortez ENSEMBLE à COUR, assez vite`, `En liberté avec Cécilia — les gestes suivent le texte (la lettre, la bourse, le baiser de la mère). S'asseoir possible (chaise ? genou ?)`],
-      [`(8) L'arrestation 🪢`, `Sur « Au diable tout ce bavardage ! » : tu reviens à COUR, vers Zuniga`, `Tu descends DANS LE PUBLIC chercher Carmen`, `Zuniga te passe LA CORDE. Repère Carmen dans le public, montre-la du doigt (« là-bas ! »), descends, ramène-la de force — elle se débat — et remonte l'escalier juste avant la fin de la musique. Présente-la à Zuniga`],
-      [`(10) Séguedille`, `En scène — tu gardes Carmen, AU MILIEU`, `Zuniga t'emmène en prison, par le col, à COUR, sur la musique`, `Elle te séduit, tu t'énerves (« Tais-toi ! »)… et tu la DÉTACHES sur « Près des remparts de Séville ». Après les applaudissements : elle s'enfuit — reste AU CENTRE, la corde vide dans les mains, comme un idiot. Zuniga, choqué, t'attache MAINS DANS LE DOS avec la même corde`],
+      [`(8) L'arrestation 🪢`, `Sur « Au diable tout ce bavardage ! » : tu reviens à COUR, vers Zuniga`, `Tu descends DANS LE PUBLIC chercher Carmen`, `Zuniga te passe LA CORDE. Repère Carmen dans le public, montre-la du doigt (« là-bas ! »), descends, ramène-la de force — elle se débat — et remonte l'escalier juste avant la fin de la musique. Présente-la à Zuniga`, `Pendant votre remontée : « Carmen, qui a déclenché la bagarre, puis marqué au couteau le visage de son adversaire, doit être conduite en prison. Don José est chargé de l'y escorter. »`],
+      [`(10) Séguedille`, `En scène — tu gardes Carmen, AU MILIEU`, `Zuniga t'emmène en prison, par le col, à COUR, sur la musique`, `Elle te séduit, tu t'énerves (« Tais-toi ! »)… et tu la DÉTACHES sur « Près des remparts de Séville ». Après les applaudissements : elle s'enfuit — reste AU CENTRE, la corde vide dans les mains, comme un idiot. Zuniga, choqué, t'attache MAINS DANS LE DOS avec la même corde`, `Après les applaudissements — c'est pendant cette phrase que tout bascule : « Subjugué, Don José laisse volontairement échapper sa prisonnière et sera condamné à la prison pour cette faute. Deux mois plus tard, nous retrouvons Carmen dans la taverne de Lilas Pastias, repaire notoire de contrebandiers. »`],
       [`Actes 2, 3 et 4`, `🚧 Pas encore mis à jour — la suite arrive (même lien)`, ``, ``]
     ],
     micaela: [
@@ -550,15 +557,17 @@
     ],
     zuniga: [
       [`(1) Scène et chœur — MORALÈS 🎬`, `Quand le chœur attaque « Sur la place, chacun passe » → tu SURGIS à COUR`, `Dernier « Drôles de gens ! » → FREEZE 2-3 secondes → tu sors à COUR`, `Traverse tout le plateau, regard TRÈS dédaigneux (le soldat-bourgeois), place-toi à JARDIN. « Drôles de gens » : prends le public à témoin. « À la porte du corps de garde » : redeviens le vrai adjudant-chef. Va-et-vient possibles. LE FREEZE de la fin : immobilité totale 2-3 secondes sur l'accord final — c'est la « photo » de ton personnage, ça marque la fin du numéro… et ça peut déclencher les applaudissements`],
-      [`(8) L'arrestation — ZUNIGA 🪢`, `Tu reviens te placer à JARDIN — même costume, tu restes le même de bout en bout`, `Après avoir laissé la garde à José : tu passes devant lui et tu sors à COUR`, `Main en visière, montre le public du doigt, va-et-vient jardin ⟷ cour, perturbé par les deux camps du chœur. 🪢 LA CORDE est DANS TA POCHE, soigneusement gardée. Sur « Au diable tout ce bavardage ! » : José revient → tu SORS LA CORDE DE TA POCHE et tu la lui passes. Quand il ramène Carmen : hochement de tête (« c'est bon, tu la tiens »), tape sur l'épaule, regard méchant à Carmen`],
-      [`(10) Fin de la Séguedille`, `TOUT DE SUITE après les applaudissements, PENDANT LA PHRASE DU NARRATEUR : tu reviens à COUR`, `Tu emmènes José par le col, à COUR, sur la musique — il y a le temps`, `Carmen s'enfuit en te voyant. José, la corde vide à la main : CHOQUÉ. Reprends LA MÊME CORDE et attache-le MAINS DANS LE DOS (comme des menottes)`],
+      [`(8) L'arrestation — ZUNIGA 🪢`, `Tu reviens te placer à JARDIN — même costume, tu restes le même de bout en bout`, `Après avoir laissé la garde à José : tu passes devant lui et tu sors à COUR`, `Main en visière, montre le public du doigt, va-et-vient jardin ⟷ cour, perturbé par les deux camps du chœur. 🪢 LA CORDE est DANS TA POCHE, soigneusement gardée. Sur « Au diable tout ce bavardage ! » : José revient → tu SORS LA CORDE DE TA POCHE et tu la lui passes. Quand il ramène Carmen : hochement de tête (« c'est bon, tu la tiens »), tape sur l'épaule, regard méchant à Carmen`, `Pendant que José la ramène du public : « Carmen, qui a déclenché la bagarre, puis marqué au couteau le visage de son adversaire, doit être conduite en prison. Don José est chargé de l'y escorter. »`],
+      [`(10) Fin de la Séguedille`, `TOUT DE SUITE après les applaudissements, PENDANT LA PHRASE DU NARRATEUR : tu reviens à COUR`, `Tu emmènes José par le col, à COUR, sur la musique — il y a le temps`, `Carmen s'enfuit en te voyant. José, la corde vide à la main : CHOQUÉ. Reprends LA MÊME CORDE et attache-le MAINS DANS LE DOS (comme des menottes)`, `C'est PENDANT cette phrase que tu reviens : « Subjugué, Don José laisse volontairement échapper sa prisonnière et sera condamné à la prison pour cette faute. Deux mois plus tard, nous retrouvons Carmen dans la taverne de Lilas Pastias, repaire notoire de contrebandiers. »`],
       [`Actes 2, 3 et 4 (N°14, N°18…)`, `🚧 Pas encore mis à jour — la suite arrive (même lien)`, ``, ``]
     ],
     frasquita: [
-      [`Actes 2 et 3 (N°12, 14, 18, 19, 20, 24)`, `🚧 Pas encore mis à jour — la mise en espace de tes numéros arrive (même lien, recharge la page)`, ``, ``]
+      [`(12) Chanson bohème — ta 1ʳᵉ entrée 💃`, `Vous entrez TOUTES LES TROIS ensemble à COUR (avec Carmen et Mercédès)`, ``, `Placement pendant l'intro : TOI (Maud) à COUR, Carmen AU MILIEU, Mercédès (Agnès) à JARDIN. Vous vous placez en dansant déjà un peu — petit jeu entre vous trois (à régler ensemble). « Les tringles des sistres tintaient… » : la danse MONTE avec la musique, « ardente, folle, fiévreuse », jusqu'au tourbillon des « tra la la »`, `Juste après votre danse : « Soudain, on entend des exclamations qui viennent de l'extérieur de la taverne. On acclame Escamillo, le torero qui s'est couvert de gloire aux dernières courses de Grenade. »`],
+      [`La suite (N°14, 18, 19, 20, 24)`, `🚧 Pas encore mis à jour — la suite arrive (même lien, recharge la page)`, ``, ``]
     ],
     mercedes: [
-      [`Actes 2 et 3 (N°12, 14, 18, 19, 20, 24)`, `🚧 Pas encore mis à jour — la mise en espace de tes numéros arrive (même lien, recharge la page)`, ``, ``]
+      [`(12) Chanson bohème — ta 1ʳᵉ entrée 💃`, `Vous entrez TOUTES LES TROIS ensemble à COUR (avec Carmen et Frasquita)`, ``, `Placement pendant l'intro : TOI (Agnès) à JARDIN, Carmen AU MILIEU, Frasquita (Maud) à COUR. Vous vous placez en dansant déjà un peu — petit jeu entre vous trois (à régler ensemble). « Les tringles des sistres tintaient… » : la danse MONTE avec la musique, « ardente, folle, fiévreuse », jusqu'au tourbillon des « tra la la »`, `Juste après votre danse : « Soudain, on entend des exclamations qui viennent de l'extérieur de la taverne. On acclame Escamillo, le torero qui s'est couvert de gloire aux dernières courses de Grenade. »`],
+      [`La suite (N°14, 18, 19, 20, 24)`, `🚧 Pas encore mis à jour — la suite arrive (même lien, recharge la page)`, ``, ``]
     ]
   };
 
@@ -715,6 +724,7 @@
     n6bis: [{ perso: 'jose', label: 'JOSÉ', poste: 'jardin' }, { perso: 'micaela', label: 'MICAËLA', from: 'cour' }],
     n8:    [{ perso: 'zuniga', label: 'ZUNIGA', from: 'jardin' }, { perso: 'jose', label: 'JOSÉ', from: 'cour', lx: 330, ly: 174 }, { perso: 'carmen', label: 'du public', from: 'escalier', lx: 290, ly: 140 }, { perso: 'narrateur', poste: 'narrateur' }],
     n10:   [{ perso: 'jose', label: 'JOSÉ', poste: 'centre' }, { perso: 'carmen', label: 'CARMEN', poste: 'centre2' }, { perso: 'zuniga', label: 'ZUNIGA', from: 'cour' }, { perso: 'carmen', label: 'fuite CARMEN', from: 'sortiegauche', lx: 130, ly: 208 }, { perso: 'narrateur', poste: 'narrateur' }],
+    n12:   [{ from: 'cour' }, { perso: 'mercedes', label: 'AGNÈS', poste: 'jardin' }, { perso: 'carmen', label: 'CARMEN', poste: 'centre' }, { perso: 'frasquita', label: 'MAUD', poste: 'cour' }],
     n14:   [{ perso: 'escamillo', label: 'ESCAMILLO', from: 'escalier' }],
     n17:   [{ perso: 'jose', label: 'JOSÉ', from: 'jardin' }, { label: 'sortie', from: 'sortie' }],
     n18:   [{ perso: 'zuniga', label: 'ZUNIGA', from: 'cour' }],
@@ -802,6 +812,7 @@
         <div class="moment">🎵 ${r[0]}</div>
         ${r[1] ? `<div class="lf mouvement"><span class="tag entree">➡ ENTRÉE</span>${flashDirections(r[1])}</div>` : ''}
         ${r[3] ? `<div class="lf"><span class="tag note">📝</span>${flashDirections(r[3])}</div>` : ''}
+        ${r[4] ? `<div class="lf"><span class="tag narr">🎙 NARRATEUR</span>${flashDirections(r[4])}</div>` : ''}
         ${r[2] ? (reste
           ? `<div class="lf mouvement"><span class="tag reste">✋ TU RESTES EN SCÈNE</span>${flashDirections(r[2].replace(/^Tu restes( en scène)?( —)?/i, ''))}</div>`
           : `<div class="lf mouvement"><span class="tag sortie">SORTIE 🚪</span>${flashDirections(r[2])}</div>`) : ''}
@@ -813,23 +824,23 @@
 
   // Schéma associé à chaque carte de la feuille (même index que FEUILLES)
   const PLANS_FEUILLE = {
-    carmen:    [null, 'n5', 'n6', 'n8', 'n10', null],
+    carmen:    [null, 'n5', 'n6', 'n8', 'n10', 'n12', null],
     jose:      ['n5', 'n6', 'n6bis', null, 'n8', 'n10', null],
     micaela:   ['n6bis', null, 'n22', null],
     escamillo: ['n14', 'n23', 'n26'],
     zuniga:    ['n1', 'n8', 'n10', null],
-    frasquita: [null],
-    mercedes:  [null]
+    frasquita: ['n12', null],
+    mercedes:  ['n12', null]
   };
   // Carte détaillée du déroulé associée à chaque carte de la feuille
   const DETAILS_FEUILLE = {
-    carmen:    [null, 'n5', 'n6', 'n8', 'n10', null],
+    carmen:    [null, 'n5', 'n6', 'n8', 'n10', 'n12', null],
     jose:      ['n5', 'n6', 'n6bis', 'n7', 'n8', 'n10', null],
     micaela:   ['n6bis', 'n7', 'n22', null],
     escamillo: ['n14', 'n23', 'n26'],
     zuniga:    ['n1', 'n8', 'n10', null],
-    frasquita: [null],
-    mercedes:  [null]
+    frasquita: ['n12', null],
+    mercedes:  ['n12', null]
   };
   let detailMoment = false;
 
@@ -838,6 +849,7 @@
     let rows = '';
     if (r[1]) rows += `<tr><th class="th-entree">➡<br>ENTRÉE</th><td>${flashDirections(r[1])}</td></tr>`;
     if (r[3]) rows += `<tr><th class="th-note">📝<br>NOTES</th><td>${flashDirections(r[3])}</td></tr>`;
+    if (r[4]) rows += `<tr><th class="th-narr">🎙<br>NARRATEUR</th><td>${flashDirections(r[4])}</td></tr>`;
     if (r[2]) rows += reste
       ? `<tr><th class="th-reste">✋<br>TU RESTES</th><td>${flashDirections(r[2].replace(/^Tu restes( en scène)?( —)?/i, '')) || 'En scène !'}</td></tr>`
       : `<tr><th class="th-sortie">🚪<br>SORTIE</th><td>${flashDirections(r[2])}</td></tr>`;
