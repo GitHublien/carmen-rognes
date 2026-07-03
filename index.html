@@ -914,6 +914,7 @@
       zone.innerHTML = '';
       contenu.style.display = '';
       document.querySelectorAll('[data-persos]').forEach(el => el.classList.remove('cache'));
+      contenu.scrollIntoView({ behavior: 'smooth' });
       return;
     }
     carteIndex = 0;
