@@ -119,6 +119,35 @@
     font-size: 1rem; font-weight: bold; background: var(--rouge); color: white;
     border: none; border-radius: 22px; padding: 10px 22px; cursor: pointer;
   }
+  /* ---- Mode carte par carte ---- */
+  .carte-moment {
+    border: 4px solid; border-radius: 16px; overflow: hidden;
+    margin: 12px 0; background: white; box-shadow: 0 3px 10px rgba(90,60,20,0.2);
+  }
+  .cm-titre { color: white; font-size: 1.3rem; font-weight: bold; padding: 12px 16px; }
+  .cm-table { width: 100%; border-collapse: collapse; }
+  .cm-table th {
+    width: 90px; padding: 12px 6px; color: white; font-size: 0.9rem;
+    vertical-align: top; text-align: center; letter-spacing: 0.5px;
+  }
+  .cm-table td { padding: 12px 14px; font-size: 1.12rem; border-bottom: 2px solid #f0e6cc; }
+  .th-entree { background: #1565c0; }
+  .th-sortie { background: #6a1b9a; }
+  .th-reste { background: #37474f; }
+  .th-note { background: #9e7c0c; }
+  .cm-nav { display: flex; align-items: center; gap: 10px; margin: 14px 0 4px; }
+  .cm-nav button {
+    flex: 1; font-family: inherit; font-size: 1.25rem; font-weight: bold;
+    padding: 14px 8px; border: none; border-radius: 14px;
+    background: var(--rouge); color: white; cursor: pointer;
+  }
+  .cm-nav button:disabled { opacity: 0.35; cursor: default; }
+  .cm-compteur { font-weight: bold; font-size: 1.2rem; min-width: 62px; text-align: center; color: var(--rouge); }
+  .cm-mode {
+    display: block; margin: 10px auto 0; font-family: inherit;
+    font-size: 0.98rem; font-weight: bold; background: white; color: var(--rouge);
+    border: 2px solid var(--rouge); border-radius: 20px; padding: 8px 18px; cursor: pointer;
+  }
 
   /* ---------- Titres d'actes ---------- */
   h2.acte {
@@ -779,32 +808,49 @@
       </div>`;
   }
 
-  function choisir(role) {
-    roleCourant = role;
-    if (role === 'tous') detailsVisibles = false;
-    const barre = document.getElementById('barre-choix');
+  let carteIndex = 0;
+  let modeFeuille = 'cartes';
+
+  function ligneTableau(r) {
+    const reste = r[2] && /^Tu restes/i.test(r[2]);
+    let rows = '';
+    if (r[1]) rows += `<tr><th class="th-entree">➡<br>ENTRÉE</th><td>${flashDirections(r[1])}</td></tr>`;
+    if (r[2]) rows += reste
+      ? `<tr><th class="th-reste">✋<br>TU RESTES</th><td>${flashDirections(r[2].replace(/^Tu restes( en scène)?( —)?/i, '')) || 'En scène !'}</td></tr>`
+      : `<tr><th class="th-sortie">🚪<br>SORTIE</th><td>${flashDirections(r[2])}</td></tr>`;
+    if (r[3]) rows += `<tr><th class="th-note">📝<br>NOTES</th><td>${flashDirections(r[3])}</td></tr>`;
+    return rows;
+  }
+
+  function majFiche(defiler) {
+    const p = PERSOS[roleCourant];
     const zone = document.getElementById('fiche-perso');
     const contenu = document.getElementById('contenu');
-    if (role === 'tous') {
-      barre.style.display = 'none';
-      zone.innerHTML = '';
-      contenu.style.display = '';
-      document.querySelectorAll('[data-persos]').forEach(el => el.classList.remove('cache'));
-      return;
+    const feuille = FEUILLES[roleCourant] || [];
+    let corps = '';
+    if (modeFeuille === 'cartes') {
+      const r = feuille[carteIndex];
+      corps = `
+        <div class="carte-moment" style="border-color:${p.couleur}">
+          <div class="cm-titre" style="background:${p.couleur}">🎵 ${r[0]}</div>
+          <table class="cm-table">${ligneTableau(r)}</table>
+        </div>
+        <div class="cm-nav">
+          <button onclick="cartePrecedente()" ${carteIndex === 0 ? 'disabled' : ''}>◀ Avant</button>
+          <span class="cm-compteur">${carteIndex + 1} / ${feuille.length}</span>
+          <button onclick="carteSuivante()" ${carteIndex === feuille.length - 1 ? 'disabled' : ''}>Suivant ▶</button>
+        </div>
+        <button class="cm-mode" onclick="basculerMode()">📋 Voir toute ma feuille d'un coup</button>`;
+    } else {
+      corps = feuille.map(r => ligneFeuille(r, p.couleur)).join('') +
+        `<button class="cm-mode" onclick="basculerMode()">🎴 Revenir au mode carte par carte</button>`;
     }
-    const p = PERSOS[role];
-    barre.style.display = 'flex';
-    barre.style.borderBottomColor = p.couleur;
-    document.getElementById('barre-img').src = `avatar-${role}.jpg`;
-    document.getElementById('barre-img').style.borderColor = p.couleur;
-    document.getElementById('barre-txt').innerHTML = `${p.affiche} <span style="font-weight:normal;font-style:italic;">— ${p.nom}</span>`;
-    document.getElementById('barre-txt').style.color = p.couleur;
     zone.innerHTML = `
       <div class="fiche" style="border-color:${p.couleur}">
         <h3 style="color:${p.couleur}">🎤 ${p.affiche.toUpperCase()} — ${p.nom}</h3>
-        <div style="font-style:italic; color:#6b5a48; margin-bottom:4px;">Ta feuille d'entrées et sorties, dans l'ordre du spectacle :</div>
-        ${(FEUILLES[role] || []).map(r => ligneFeuille(r, p.couleur)).join('')}
-        <div style="background:#fff3cd; border:2px solid #b8860b; border-radius:10px; padding:8px 12px; margin-top:10px; font-size:0.95rem;">
+        <div style="font-style:italic; color:#6b5a48; margin-bottom:4px;">${modeFeuille === 'cartes' ? 'Ton parcours, moment par moment — touche « Suivant » :' : 'Ta feuille complète, dans l\'ordre du spectacle :'}</div>
+        ${corps}
+        <div style="background:#fff3cd; border:2px solid #b8860b; border-radius:10px; padding:8px 12px; margin-top:12px; font-size:0.95rem;">
           ⚠️ <b>RÈGLE :</b> il n'y a PAS de sortie à jardin (c'est le mur) — « jardin » = tu passes DERRIÈRE les chœurs. La seule vraie sortie du plateau : <b>l'escalier, à cour</b>.
         </div>
         <button id="btn-details" onclick="basculerDetails()">${detailsVisibles ? 'Masquer les détails' : '📖 Voir les détails (schémas, textes du narrateur)'}</button>
@@ -813,17 +859,52 @@
       contenu.style.display = '';
       document.querySelectorAll('[data-persos]').forEach(el => {
         const liste = el.dataset.persos.split(' ');
-        el.classList.toggle('cache', !liste.includes(role));
+        el.classList.toggle('cache', !liste.includes(roleCourant));
       });
     } else {
       contenu.style.display = 'none';
     }
-    zone.scrollIntoView({ behavior: 'smooth' });
+    if (defiler) zone.scrollIntoView({ behavior: 'smooth' });
   }
 
+  function choisir(role) {
+    roleCourant = role;
+    const barre = document.getElementById('barre-choix');
+    const zone = document.getElementById('fiche-perso');
+    const contenu = document.getElementById('contenu');
+    if (role === 'tous') {
+      detailsVisibles = false;
+      barre.style.display = 'none';
+      zone.innerHTML = '';
+      contenu.style.display = '';
+      document.querySelectorAll('[data-persos]').forEach(el => el.classList.remove('cache'));
+      return;
+    }
+    carteIndex = 0;
+    const p = PERSOS[role];
+    barre.style.display = 'flex';
+    barre.style.borderBottomColor = p.couleur;
+    document.getElementById('barre-img').src = `avatar-${role}.jpg`;
+    document.getElementById('barre-img').style.borderColor = p.couleur;
+    document.getElementById('barre-txt').innerHTML = `${p.affiche} <span style="font-weight:normal;font-style:italic;">— ${p.nom}</span>`;
+    document.getElementById('barre-txt').style.color = p.couleur;
+    majFiche(true);
+  }
+
+  function carteSuivante() {
+    const feuille = FEUILLES[roleCourant] || [];
+    if (carteIndex < feuille.length - 1) { carteIndex++; majFiche(false); }
+  }
+  function cartePrecedente() {
+    if (carteIndex > 0) { carteIndex--; majFiche(false); }
+  }
+  function basculerMode() {
+    modeFeuille = modeFeuille === 'cartes' ? 'liste' : 'cartes';
+    majFiche(false);
+  }
   function basculerDetails() {
     detailsVisibles = !detailsVisibles;
-    choisir(roleCourant);
+    majFiche(false);
   }
 
   // ================== NOTES ==================
