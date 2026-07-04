@@ -198,6 +198,8 @@
   .audio-bloc { background: #fffdf7; border: 2px solid var(--or); border-radius: 12px; padding: 10px 12px; margin: 12px 0; }
   .audio-bloc .audio-titre { font-weight: bold; color: #7a5a10; margin-bottom: 6px; font-size: 1rem; }
   .audio-bloc audio { width: 100%; height: 46px; }
+  .audio-bloc.audio-nar { border-color: #2e7d32; background: #eef7ee; }
+  .audio-bloc.audio-nar .audio-titre { color: #2e7d32; }
   .notes {
     margin-top: 10px; padding: 10px 12px; min-height: 40px;
     background: #fdf7dd; border-radius: 10px;
@@ -431,7 +433,7 @@
             `🅱️ SI LA TRAVERSÉE DU PUBLIC EST IMPOSSIBLE : repli 1 — tout se joue sur L'ESCALIER : José descend, la récupère en bas (zone loges/cache), et la REMONTÉE à la corde reste le moment fort, bien visible. Repli 2 — tout sur le plateau : il la ramène en la tirant depuis le bout COUR du chœur, la lutte traverse le plateau. Dans les trois cas : mêmes jeux (corde, débat, cheveux en bataille, arrivée sur la musique lente)`],
       plan: 'n8', note: 'n8' },
 
-    { type: 'narrateur', texte: `Carmen, qui a déclenché la bagarre, puis marqué au couteau le visage de son adversaire, doit être conduite en prison. Don José est chargé de l'y escorter.`, apres: 'après le N°8' },
+    { type: 'narrateur', texte: `Carmen, qui a déclenché la bagarre, puis marqué au couteau le visage de son adversaire, doit être conduite en prison. Don José est chargé de l'y escorter.`, apres: 'après le N°8', note: 'nar1' },
 
     { type: 'scene', num: 'N°10 — Séguedille 🌹🪢', persos: ['carmen', 'jose', 'zuniga'],
       quand: `Zuniga vient de sortir à cour — José garde Carmen, attachée. Ils sont AU MILIEU de la scène`,
@@ -448,9 +450,9 @@
             `🎼 <b>PUIS LA MUSIQUE (orchestre seul) — PERSONNE ne sort pendant la musique</b> : elle joue sur scène vide et nous dépose chez Lillas Pastia — l'acte 2 peut commencer`],
       plan: 'n10', note: 'n10' },
 
-    { type: 'narrateur', texte: `Subjugué, Don José laisse volontairement échapper sa prisonnière et sera condamné à la prison pour cette faute. Deux mois plus tard, nous retrouvons Carmen dans la taverne de Lilas Pastias, repaire notoire de contrebandiers.`, apres: 'après le N°10' },
+    { type: 'narrateur', texte: `Subjugué, Don José laisse volontairement échapper sa prisonnière et sera condamné à la prison pour cette faute. Deux mois plus tard, nous retrouvons Carmen dans la taverne de Lilas Pastias, repaire notoire de contrebandiers.`, apres: 'après le N°10', note: 'nar2' },
 
-    { type: 'acte', titre: '🎼 ORCHESTRE seul (pas de mise en scène) — puis ACTE 2' },
+    { type: 'acte', titre: '🎼 ORCHESTRE seul (pas de mise en scène) — puis ACTE 2', note: 'orch2' },
 
     { type: 'scene', num: 'N°12 — Chanson bohème 💃', persos: ['carmen', 'frasquita', 'mercedes'],
       quand: `Après la musique d'orchestre qui ouvre l'acte 2 — chez Lillas Pastia`,
@@ -464,7 +466,7 @@
             `🎙 <b>PENDANT LE TEXTE DU NARRATEUR</b> qui suit : jeux de regards — <b>CARMEN traverse et se met COMPLÈTEMENT À JARDIN</b> (elle veut voir ce qui se passe) ; <b>Mercédès la rejoint, à côté d'elle</b>. Configuration : Zuniga + Frasquita à cour · Carmen + Mercédès à jardin`],
       plan: 'n12', note: 'n12' },
 
-    { type: 'narrateur', texte: `Soudain, on entend des exclamations qui viennent de l'extérieur de la taverne. On acclame Escamillo, le torero qui s'est couvert de gloire aux dernières courses de Grenade.`, apres: 'après le N°12' },
+    { type: 'narrateur', texte: `Soudain, on entend des exclamations qui viennent de l'extérieur de la taverne. On acclame Escamillo, le torero qui s'est couvert de gloire aux dernières courses de Grenade.`, apres: 'après le N°12', note: 'nar3' },
 
     { type: 'scene', num: 'N°14 — Couplets du Toréador ⭐', persos: ['escamillo', 'carmen', 'frasquita', 'mercedes', 'zuniga'],
       quand: `Juste après l'annonce du narrateur — cris : « Escamillo ! Escamillo ! » — tout le monde l'acclame… SAUF Carmen`,
@@ -835,14 +837,22 @@
             { src: 'audio/06-n5-habanera.mp3', titre: 'N°5 — Habanera « L\'amour est un oiseau rebelle »' }],
     n6:    [{ src: 'audio/07-n6-la-rose.mp3', titre: 'N°6 — « Carmen ! sur tes pas » + la rose' }],
     n6bis: [{ src: 'audio/08-n6bis-jose-micaela.mp3', titre: 'N°6bis — José seul, puis l\'arrivée de Micaëla' }],
-    n7:    [{ src: 'audio/09-n7-duo-mere.mp3', titre: 'N°7 — Duo « Parle-moi de ma mère »' }]
+    n7:    [{ src: 'audio/09-n7-duo-mere.mp3', titre: 'N°7 — Duo « Parle-moi de ma mère »' }],
+    n8:    [{ src: 'audio/10-n8-arrestation.mp3', titre: 'N°8 — L\'arrestation' }],
+    nar1:  [{ src: 'audio/10b-narration-1.mp3', titre: '1ʳᵉ narration — Carmen conduite en prison', vert: true }],
+    n10:   [{ src: 'audio/11-n10-seguedille.mp3', titre: 'N°10 — Séguedille (applaudissements inclus : Zuniga arrive)' }],
+    nar2:  [{ src: 'audio/11b-narration-2.mp3', titre: '2ᵉ narration — José laisse échapper + Deux mois plus tard', vert: true }],
+    orch2: [{ src: 'audio/12-orchestre-seul.mp3', titre: 'Orchestre seul — la musique (scène vide)' }],
+    n12:   [{ src: 'audio/13-n12-chanson-boheme.mp3', titre: 'N°12 — Chanson bohème' }],
+    nar3:  [{ src: 'audio/13b-narration-3.mp3', titre: '3ᵉ narration — On acclame Escamillo', vert: true }],
+    n14:   [{ src: 'audio/14-n14-toreador.mp3', titre: 'N°14 — Couplets du Toréador' }]
   };
   function blocAudio(note) {
     const liste = AUDIOS[note];
     if (!liste) return '';
     return liste.map(a => `
-      <div class="audio-bloc">
-        <div class="audio-titre">🎧 ${a.titre}</div>
+      <div class="audio-bloc${a.vert ? ' audio-nar' : ''}">
+        <div class="audio-titre">${a.vert ? '🟢 🎙' : '🎧'} ${a.titre}</div>
         <audio controls preload="none" src="${a.src}"></audio>
       </div>`).join('');
   }
@@ -861,7 +871,7 @@
   let html = '';
   SEQUENCE.forEach((s, i) => {
     if (s.type === 'acte') {
-      html += `<h2 class="acte">${s.titre}</h2>`;
+      html += `<h2 class="acte">${s.titre}</h2>` + (s.note ? `<div data-persos="">${blocAudio(s.note)}</div>` : '');
     } else if (s.type === 'info') {
       html += `<div class="carte-info" data-persos="">${s.texte}${blocAudio(s.note)}</div>`;
     } else if (s.type === 'alerte') {
@@ -871,7 +881,7 @@
         <div class="carte-narrateur" data-persos="narrateur">
           <img src="avatar-narrateur.jpg" onerror="this.remove()">
           <div><div class="micro">🎙️ NARRATEUR — ${s.apres}</div>
-          <blockquote>« ${s.texte} »</blockquote></div>
+          <blockquote>« ${s.texte} »</blockquote>${blocAudio(s.note)}</div>
         </div>`;
     } else if (s.type === 'scene') {
       const jetons = (s.jetons || []).map(j => `<span class="jeton ${j[0]}">${j[1]}</span>`).join('');
