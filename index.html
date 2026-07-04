@@ -532,7 +532,7 @@
 
     { type: 'info', texte: `<b>Pendant l'entracte (hors jeu)</b> : les quatre de la fin d'acte 2 — <b>Carmen, Don José, Frasquita, Mercédès</b> — arrivent par le public directement à la loge (il y en aurait une : emplacement exact à repérer sur place — sinon, repli à côté de l'escalier, comme prévu). En coulisses derrière les chœurs il reste <b>Escamillo, Zuniga (rôle terminé 🎉) et Micaëla</b> — qui peuvent rejoindre les autres pour se désaltérer. Avant la reprise : <b>tout le monde se remet en place dans les coulisses, comme au début de l'acte 1</b>.`, note: 'entracte' },
 
-    { type: 'acte', titre: '🎼 ORCHESTRE seul (pas de mise en scène, personne en scène) — puis ACTE 3' },
+    { type: 'acte', titre: '🎼 ORCHESTRE seul (pas de mise en scène, personne en scène) — puis ACTE 3', note: 'orch3' },
 
     { type: 'scene', num: 'N°19 — Le retour des contrebandiers 🤫', persos: ['carmen', 'jose', 'frasquita', 'mercedes'],
       quand: `Juste après la musique d'orchestre (scène vide) — l'acte 3 commence : « Écoute, écoute, compagnon, écoute »`,
@@ -548,7 +548,7 @@
       fin: `José sorti à JARDIN — <b>Carmen seule AU MILIEU, Frasquita et Mercédès ensemble à COUR</b> : les cartes peuvent commencer.`,
       plan: 'n19', plan2: 'n19fin', note: 'n19' },
 
-    { type: 'narrateur', texte: `Les contrebandiers s'éloignent. Restées seules, Carmen, Frasquita et Mercédès interrogent les cartes.`, apres: 'après le N°19' },
+    { type: 'narrateur', texte: `Les contrebandiers s'éloignent. Restées seules, Carmen, Frasquita et Mercédès interrogent les cartes.`, apres: 'après le N°19', note: 'nar6' },
 
     { type: 'scene', num: 'N°20 — Le trio des cartes 🃏', persos: ['carmen', 'frasquita', 'mercedes'],
       quand: `Enchaînement, juste après la narration — chacune est déjà à sa place`,
@@ -561,7 +561,7 @@
       fin: `SORTIE — <b>PENDANT LA NARRATION (« Le jour se lève… »)</b> : elles sortent <b>TOUTES LES TROIS à JARDIN</b> — <b>Carmen va REJOINDRE JOSÉ</b>, totalement DÉPITÉE (la mort, encore la mort), <b>les deux autres tout sourire</b> (« fortune ! fortune ! ») : <b>chacune dans son monde</b>. (Elles reviendront de jardin — Escamillo, lui, arrivera à COUR.) Scène vide pour l'arrivée de Micaëla.`,
       plan: 'n20', note: 'n20' },
 
-    { type: 'narrateur', texte: `Le jour se lève. Pendant que les contrebandiers vont opérer, Don José est chargé de veiller sur le campement. Micaëla avance dans la montagne à la recherche de Don José mais ne le trouve pas.`, apres: 'après le N°20' },
+    { type: 'narrateur', texte: `Le jour se lève. Pendant que les contrebandiers vont opérer, Don José est chargé de veiller sur le campement. Micaëla avance dans la montagne à la recherche de Don José mais ne le trouve pas.`, apres: 'après le N°20', note: 'nar7' },
 
     { type: 'scene', num: 'N°22 — Air de Micaëla 🙏', persos: ['micaela'],
       quand: `⚡ PENDANT LA NARRATION : dès que le narrateur dit son nom (« Micaëla avance dans la montagne… »), elle entre`,
@@ -574,21 +574,38 @@
       fin: `Micaëla cachée en coulisses côté cour — la narration (« Don José, avisant un inconnu qui s'approche, tire… ») lance l'arrivée d'Escamillo.`,
       plan: 'n22', note: 'n22' },
 
-    { type: 'alerte', texte: `🚧 ATTENTION : À PARTIR D'ICI, CE N'EST PAS ENCORE MIS À JOUR 🚧<br><span style="font-weight:normal;font-size:0.95rem;">La mise en espace est réglée jusqu'au N°22 (l'air de Micaëla, ci-dessus). Ce qui suit n'est qu'une première ébauche : ne rien apprendre de définitif ici, la suite arrive.</span>` },
+    { type: 'narrateur', texte: `Don José, avisant un inconnu qui s'approche tire… et troue le chapeau d'Escamillo.`, apres: 'après le N°22', note: 'nar8' },
 
-    { type: 'narrateur', texte: `Don José, avisant un inconnu qui s'approche tire… et troue le chapeau d'Escamillo.`, apres: 'après le N°22' },
-
-    { type: 'scene', num: 'N°23 — Duo ⭐', persos: ['escamillo', 'jose'],
+    { type: 'scene', num: 'N°23 — Le duel Escamillo-José 🔪🔪', persos: ['escamillo', 'jose', 'carmen', 'frasquita', 'mercedes'],
       quand: `Juste après le coup de feu raconté par le narrateur`,
-      jetons: [['jardin', '⬅ ESCAMILLO SURGIT À JARDIN']],
-      action: `<b>Escamillo</b> surgit là où on ne l'attend pas, face à <b>Don José</b>. (Accessoire : le chapeau — pas de vrai trou)`,
-      plan: 'n23', note: 'n23' },
+      jetons: [['cour', '⚡ ESCAMILLO ENTRE À COUR ➡'], ['jardin', '⬅ JOSÉ revient de JARDIN (son poste de guet) — face à face']],
+      action: `La rencontre des deux rivaux : <b>amis d'abord, navajas ensuite</b>. Chacun a sa navaja EN POCHE — Escamillo a aussi <b>LA BOURSE</b> (celle de l'acte 1 !). Micaëla reste cachée en coulisses côté cour.`,
+      jeu: [`🎩 <b>Escamillo entre à COUR, RÉCUPÈRE SON CHAPEAU et le met sur sa tête</b> (le chapeau du « coup de feu » — comment il arrive en scène : à caler sur place, il peut être jeté depuis les coulisses juste après la narration !) — « Je suis Escamillo, torero de Grenade ! »`,
+            `🤝 <b>D'ABORD ILS SONT AMIS</b> : « Escamillo ! … soyez le bienvenu, mon camarade » — pas de tension, tout va bien. Escamillo raconte : il est amoureux fou de Carmen — « Je l'aime, oui mon cher, je l'aime à la folie ! »`,
+            `💰 « Pour nous enlever nos filles de Bohême, savez-vous bien qu'il faut payer ? » — « Soit ! on paiera » : <b>Escamillo SORT LA BOURSE</b> (la même que Micaëla à l'acte 1 — le clin d'œil des accessoires)`,
+            `🔪 José : « et que le prix se paie à coups de navaja ! » — <b>José sort SA navaja, à moitié cachée, il la montre</b> : le discours est très net. Escamillo comprend : « C'est un déserteur… celle qu'elle aimait, c'est donc vous ? » — « Oui, c'est moi-même » — « J'en suis ravi, mon cher, et le tour est complet ! » — <b>Escamillo ne sort PAS encore la sienne</b>`,
+            `⚔️ <b>« METTEZ-VOUS EN GARDE ! » : LÀ Escamillo sort sa navaja — ils OUVRENT les deux navajas</b>, face à face`,
+            `🐂 <b>LA BATAILLE = UNE CORRIDA — José est le taureau, Escamillo le toréador</b> : 1) José attaque, navaja au-dessus de la tête → Escamillo SE BAISSE · 2) José revient pour planter → Escamillo TOURNE comme un toréador (passe) → <b>ils échangent les côtés</b> (Escamillo à cour, José à jardin) · 3) nouvelle attaque, nouvelle passe → <b>ils échangent encore</b> (Escamillo à jardin, José à cour) · toujours DE LOIN, sans contact — navajas factices mais prudence !`,
+            `⚡ <b>CARMEN ARRIVE DE JARDIN — Escamillo LA VOIT et se déconcentre</b>, le couteau à la main → <b>José en profite pour venir le trucider → Escamillo LUI TIENT LE BRAS</b> pour l'empêcher — et Carmen crie : <b>« Holà ! holà ! José ! » — ELLE S'INTERPOSE devant eux</b>`,
+            `👥 Sur « Holà ! » : <b>Frasquita et Mercédès arrivent de jardin ensemble</b> — tout le monde est là`,
+            `💘 « <b>J'ai l'âme ravie que ce soit vous, Carmen, qui me sauviez la vie</b> » — Escamillo la REGARDE très, très fort (pas de caresse — il y a une coupure ici). <b>José le fixe, prêt à se battre encore — Carmen fait un geste : « ça suffit ! »</b>`,
+            `🎶 <b>SORTIE D'ESCAMILLO, devant tout le monde : à COUR — puis il fait LE TOUR derrière les chœurs jusqu'à JARDIN</b> (la coulisse cachée) : c'est là que Carmen viendra le retrouver au N°24. Sa reprise (« Toréador, en garde… l'amour t'attend ») se chante <b>depuis les coulisses</b> — la voix au loin, pendant que José l'entend…`],
+      fin: `Escamillo parti (le tour vers jardin) — sur scène : Carmen entre José et les filles. Carmen à José : « Va-t'en, va-t'en, tu ferais bien… notre métier ne te vaut rien. » La suite = N°24.`,
+      plan: 'n23', plan2: 'n23b', plan3: 'n23fin', note: 'n23' },
 
-    { type: 'scene', num: 'N°24 — Final ⭐', persos: ['escamillo', 'carmen', 'jose', 'micaela', 'frasquita', 'mercedes'],
-      quand: `Enchaînement`,
-      jetons: [],
-      action: `Tout le monde — le final de l'acte 3.`,
-      note: 'n24' },
+    { type: 'alerte', texte: `🚧 ATTENTION : À PARTIR D'ICI, CE N'EST PAS ENCORE MIS À JOUR 🚧<br><span style="font-weight:normal;font-size:0.95rem;">La mise en espace est réglée jusqu'au N°23 (le duel, ci-dessus). Ce qui suit n'est qu'une première ébauche : ne rien apprendre de définitif ici, la suite arrive.</span>` },
+
+    { type: 'scene', num: 'N°24 — Final de l\'acte 3 : Micaëla découverte 💔', persos: ['micaela', 'jose', 'carmen', 'frasquita', 'mercedes'],
+      quand: `Enchaînement après le duel`,
+      jetons: [['cour', '⚡ MICAËLA sort de sa cachette (coulisses côté cour) ➡']],
+      action: `On découvre <b>Micaëla</b> — elle supplie José : <b>« ta mère se meurt »</b>. Le grand déchirement de l'acte 3.`,
+      jeu: [`👁 <b>MICAËLA est DÉCOUVERTE</b> — elle sort de sa cachette (coulisses côté cour) : elle supplie José de la suivre — « ta mère… »`,
+            `💔 Carmen à José : « <b>Va-t'en, va-t'en, tu ferais bien… notre métier ne te vaut rien</b> » — José déchiré entre la jalousie et sa mère`,
+            `🎶 <b>LA VOIX D'ESCAMILLO AU LOIN</b> (« Toréador, en garde… et songe bien, oui songe en combattant, qu'un œil noir te regarde et que l'amour t'attend ») — chantée <b>depuis les coulisses côté jardin</b> : José comprend où va le cœur de Carmen…`,
+            `⚡ LES SORTIES : <b>José part à COUR avec MICAËLA</b> (« Tu seras contente… ») — et <b>CARMEN sort à JARDIN : elle va RETROUVER ESCAMILLO</b> dans les coulisses. Les amants réunis d'un côté, José arraché de l'autre — tout est dit`,
+            `Frasquita et Mercédès sortent avec Carmen, à JARDIN`],
+      fin: `Scène vide. ORCHESTRE seul, puis l'acte 4 : le jour des arènes.`,
+      plan: 'n24', note: 'n24' },
 
     { type: 'acte', titre: '🎼 ORCHESTRE seul (pas de mise en scène) — puis ACTE 4' },
 
@@ -622,6 +639,8 @@
       [`(18) La désertion 🧥 — final de l'acte 2`, `Tu sors à peine à cour… et tu RE-RENTRES aussitôt, ZUNIGA collé à toi, galant — laisse-le approcher, attrape-le un peu : on doit VOIR la scène que le narrateur raconte`, `Tableau final « la liberté ! » : tous serrés au centre, face au public — TOI côté JARDIN, José au milieu, les filles à cour · dernier accord → vous sortez TOUS EN RIANT par l'ESCALIER, derrière le public, jusqu'aux loges. Puis ENTRACTE (le vrai) !`, `José surgit derrière Zuniga, navaja sortie → pendant la menace, ÉCHAPPE-TOI côté JARDIN à l'avant-scène : tu te retrouves À CÔTÉ DU NARRATEUR et tu REGARDES la scène · José emmène Zuniga à jardin (fausse sortie) et revient EN CHEMISE · « Es-tu des nôtres maintenant ?… Ah ! le mot n'est pas galant, mais qu'importe… tu t'y feras quand tu verras, là-bas, comme c'est beau, la vie errante… la liberté ! la liberté ! » · les filles arrivent avec LA CAPE NOIRE → vous la mettez à José : il est des nôtres · « Suis-nous à travers la campagne » — final de l'acte 2, tous rapprochés au centre comme sur le Toréador`, `Tout se joue PENDANT cette phrase, très rapide : « Survient le capitaine Zuniga, venu courtiser Carmen. Don José s'emporte. Les contrebandiers surgissent et désarment le capitaine. »`],
       [`(19) Acte 3 — le retour des contrebandiers 🤫`, `Tu entres à COUR, DERRIÈRE JOSÉ (il est entré le premier pendant la musique, en éclaireur, et a fait signe : la voie est libre) — Frasquita et Mercédès entrent à jardin, et tout le monde se rejoint vers le milieu`, `Tu restes — SEULE AU MILIEU : José part à cour, les deux autres s'installent à cour pour les cartes`, `En ligne tous les quatre (de jardin à cour : Frasquita · Mercédès · TOI · José — vous deux côte à côte, un peu au centre) · le jeu du danger : sur un accent, tout le monde SE FIGE baissé, puis repart · PENDANT LA NARRATION : José se tourne vers toi pour t'embrasser avant de partir — TU TE DÉGAGES : LA MAIN DEVANT, refus net, sans un mot. On doit SENTIR la distance — le temps a passé, tu l'aimes moins`, `Les contrebandiers s'éloignent. Restées seules, Carmen, Frasquita et Mercédès interrogent les cartes.`],
       [`(20) Le trio des cartes 🃏`, `Tu es déjà en place — SEULE, AU MILIEU`, `À la fin, PENDANT LA NARRATION (« Le jour se lève… ») : vous sortez TOUTES LES TROIS à JARDIN — toi tu vas REJOINDRE JOSÉ, totalement DÉPITÉE (la mort, encore la mort), les deux autres tout sourire : chacune dans son monde`, `Tu tires TES cartes : LA MORT, encore la mort — tu chantes seule, sombre, pendant que les deux autres s'amusent à cour. Le contraste, c'est toute la scène`, ``],
+      [`(23) Le duel — « Holà ! holà ! José ! » ⚡`, `PENDANT LE DUEL : tu arrives DE JARDIN — Escamillo te voit et se déconcentre, José en profite → tu cries « Holà ! holà ! José ! » et TU T'INTERPOSES entre les deux`, `Tu restes — Escamillo sort à cour et fait le tour vers jardin ; José reste avec toi et les filles`, `Après « J'ai l'âme ravie que ce soit vous, Carmen, qui me sauviez la vie » (il te regarde très fort) : FAIS UN GESTE pour arrêter tout ça — José le fixe encore · puis à José : « Va-t'en, va-t'en, tu ferais bien… notre métier ne te vaut rien »`, ``],
+      [`(24) Final de l'acte 3 💔`, `Tu es en scène`, `Tu sors à JARDIN : tu vas RETROUVER ESCAMILLO dans les coulisses — les amants réunis (Frasquita et Mercédès sortent avec toi)`, `Micaëla est découverte, elle supplie José (« ta mère se meurt ») · toi, à José : « Va-t'en, va-t'en, tu ferais bien… notre métier ne te vaut rien » · la voix d'Escamillo au loin (depuis jardin) — José comprend où va ton cœur`, ``],
       [`La suite des actes 3 et 4`, `🚧 Pas encore mis à jour — la suite arrive (même lien)`, ``, ``]
     ],
     jose: [
@@ -634,17 +653,20 @@
       [`(17) Le duo — la Fleur 🌹 (acte 2)`, `Tu entres à COUR, avec la musique, juste après leur disparition à jardin (aucun croisement) — Carmen t'attend, LA CHAISE au milieu`, `À la toute fin : « Eh bien, soit… adieu, adieu pour jamais ! » → très énervé, tu RÉCUPÈRES LA CHAISE d'un geste rageur et TU SORS À JARDIN (elle sort à cour)`, `« Mettez-vous là, Don José » : tu t'assieds, elle danse pour toi · les clairons : « ce sont nos clairons qui sonnent la retraite » — TU TE LÈVES · elle reprend sa danse : TU BAISSES LA TÊTE (le désir et la honte) · « il faut que je rentre au quartier pour l'appel » → sa colère, ses moqueries · ⚠️ TON VISAGE CHANGE — premier éclair sombre : tu lui PRENDS LE BRAS (« Tu m'entendras ! ») et tu L'ASSIEDS VIOLEMMENT SUR LA CHAISE · 🌹 L'AIR DE LA FLEUR — le moment de beauté : sors la fleur DE TA POCHE (celle de l'acte 1 !), montre-la, sens-la — quand tu as fini d'en parler, REMETS-LA DANS TA POCHE · viens DERRIÈRE elle : caresse-lui les bras, pose ton visage contre elle — elle se laisse faire · « j'étais une chose à toi » : DEBOUT, tout doucement, caresse-lui le visage · vers la fin : À GENOUX, ta tête posée sur elle, la sienne sur toi · 👏 APPLAUDISSEMENTS : restez immobiles, yeux fermés · 🎵 la musique repart, elle tourne la tête : « NON, tu ne m'aimes pas » — elle se lève · ⛰ la montagne, la liberté : « Tais-toi ! tais-toi ! » — puis « Quitter mon drapeau… déserter… c'est la honte, c'est l'infamie ! » — elle te balaye, tu supplies presque (« Carmen, je t'en prie ! »), elle : « je te hais ! Adieu pour jamais ! » — toi : « Eh bien, soit… adieu, adieu pour jamais ! »`],
       [`(18) La désertion 🔪🧥 — final de l'acte 2`, `À peine sorti à jardin (pose la chaise) : FAIS LE TOUR derrière les chœurs, très vite — Carmen re-rentre à cour avec Zuniga qui l'embête → TU ARRIVES PAR DERRIÈRE`, `Tableau final « la liberté ! » : tous serrés au centre, face au public — TOI AU MILIEU (avec la cape), Carmen à jardin, les filles à cour · dernier accord → vous sortez TOUS EN RIANT par l'ESCALIER, derrière le public, jusqu'aux loges. Puis ENTRACTE (le vrai) !`, `ATTRAPE Zuniga et SORS LA NAVAJA devant lui (celle du duel du N°23 !) — il lève les mains · PENDANT « La guerre, c'est la guerre… passez devant sans vous faire prier » : fais-le MARCHER devant toi à la pointe du couteau, toute la traversée, et emmène-le À JARDIN (on ne saura pas ce qui se passe derrière) · FAUSSE SORTIE : en coulisses, ENLÈVE TA VESTE, très vite · reviens de jardin EN CHEMISE — Carmen t'attend à l'avant-scène jardin, à côté du narrateur · « Es-tu des nôtres maintenant ?… la vie errante… la liberté ! » · Frasquita et Mercédès arrivent avec LA CAPE NOIRE (tu ne les as pas vues) et te LA METTENT sur les épaules : te voilà des leurs · « Suis-nous à travers la campagne » — final de l'acte 2, tous rapprochés au centre comme sur le Toréador`, `L'attrapade se joue PENDANT cette phrase, très rapide : « Survient le capitaine Zuniga, venu courtiser Carmen. Don José s'emporte. Les contrebandiers surgissent et désarment le capitaine. »`],
       [`(19) Acte 3 — le retour des contrebandiers 🤫`, `TU ENTRES LE PREMIER, seul, à COUR, PENDANT LA MUSIQUE — l'éclaireur : accroupi, tu scrutes LE PUBLIC (la vallée, le chemin en contrebas), puis tu FAIS SIGNE du bras : la voie est libre → Carmen entre derrière toi ; Frasquita et Mercédès à jardin — tout le monde se rejoint vers le milieu`, `PENDANT LA NARRATION (« Les contrebandiers s'éloignent ») : tourne-toi vers Carmen pour l'embrasser avant de partir — ELLE MET LA MAIN DEVANT. Tu ne comprends pas… tu es MAL… sors à JARDIN, vers ton poste de guet`, `En ligne tous les quatre (Frasquita · Mercédès · Carmen · TOI, côté cour — Carmen à côté de toi, un peu au centre) · le jeu du danger : sur un accent, TOUT LE MONDE SE FIGE, baissé — puis ça repart · 💔 son refus doit se SENTIR : le temps a passé, elle s'éloigne de toi — laisse ce vide se voir sur ton visage`, `Les contrebandiers s'éloignent. Restées seules, Carmen, Frasquita et Mercédès interrogent les cartes.`],
-      [`La suite (actes 3 et 4)`, `🚧 Pas encore mis à jour — la suite arrive (même lien)`, ``, ``]
+      [`(23) LE DUEL avec Escamillo 🔪🔪`, `Tu reviens de JARDIN (ton poste de guet), face à l'inconnu qui entre à cour — c'est le coup de feu de la narration qui t'a fait revenir`, `Après « Holà ! » : Carmen s'interpose, Escamillo sort par l'escalier en te regardant — TU LE FIXES, prêt à te battre encore — Carmen te fait un geste : « ça suffit ! ». Elle te dit : « Va-t'en, va-t'en, tu ferais bien… notre métier ne te vaut rien »`, `D'abord courtois (« soyez le bienvenu ») — puis il parle de CARMEN : « je l'aime à la folie » … ta jalousie monte · SORS TA NAVAJA à moitié cachée, montre-la (« et que le prix se paie à coups de navaja ! ») · ⚔️ « METTEZ-VOUS EN GARDE ! » : les deux navajas s'ouvrent · 🐂 LA CORRIDA : TOI = le taureau, lui = le toréador — tu attaques au-dessus de sa tête, il se baisse · tu reviens, il tourne, vous ÉCHANGEZ LES CÔTÉS (deux fois) · toujours DE LOIN, sans contact ! · ⚡ Carmen arrive de jardin, il la voit, il se déconcentre → tu en profites → il te TIENT LE BRAS → « Holà ! holà ! José ! »`, ``],
+      [`(24) Final de l'acte 3 💔`, `Tu es en scène`, `Tu pars à COUR avec MICAËLA (« Tu seras contente ») — déchiré : tu entends la voix d'Escamillo au loin, depuis jardin, et tu comprends où va le cœur de Carmen`, `Micaëla sort de sa cachette et te supplie : « ta mère se meurt » · Carmen te pousse à partir (« notre métier ne te vaut rien ») · la jalousie contre le devoir — le grand déchirement`, ``],
+      [`La suite (acte 4)`, `🚧 Pas encore mis à jour — la suite arrive (même lien)`, ``, ``]
     ],
     micaela: [
       [`(6 bis) Ton arrivée`, `À COUR, un peu AVANT ta phrase : tu entres, tu le cherches, tu LE VOIS → « José ! »`, ``, `Il vient vers toi : « Me voici ! — Quelle joie ! — C'est votre mère qui m'envoie »`],
       [`(7) Duo « Parle-moi de ma mère »`, `En scène`, `Vous sortez ENSEMBLE à COUR, assez vite`, `En liberté avec Valentin — les gestes suivent le texte : tu donnes LA LETTRE, LA BOURSE, et tu transmets LE BAISER de sa mère (« vraiment, je n'ose… »)`],
       [`(22) Ton air — « Je dis que rien ne m'épouvante » 🙏`, `⚡ Tu entres à COUR PENDANT LA NARRATION — pile quand le narrateur dit ton nom (« Micaëla avance dans la montagne… ») — inquiète, tu CHERCHES José partout`, `À LA FIN DE TON AIR : quelque chose cloche, tu ENTENDS UN BRUIT → tu vas te cacher VITE, en coulisses côté COUR — tu reviendras à cour quand on te découvrira`, `TON AIR, EN LIBERTÉ TOTALE : tu chantes comme tu le désires, c'est toi qui décides — c'est ton moment · ⚠️ chez nous PAS de coup de feu : la narration raconte le tir de José, toi tu es déjà cachée`, `Le jour se lève. Pendant que les contrebandiers vont opérer, Don José est chargé de veiller sur le campement. Micaëla avance dans la montagne à la recherche de Don José mais ne le trouve pas.`],
-      [`La suite (N°24)`, `🚧 Pas encore mis à jour — la suite arrive (même lien)`, ``, ``]
+      [`(24) Final de l'acte 3 — on te découvre 💔`, `Tu SORS DE TA CACHETTE (coulisses côté cour) — on t'a découverte : supplie José, « ta mère se meurt »`, `Tu pars à COUR avec José — c'est TOI qui l'emmènes. 🎉 Ensuite, ton rôle est terminé !`, `Ton grand moment de vérité : simple, sincère — c'est toi qui gagnes cette scène`, ``]
     ],
     escamillo: [
       [`(14) L'air du Toréador — TON entrée ⭐`, `Ton annonce, c'est le narrateur : « Soudain, on entend des exclamations qui viennent de l'extérieur de la taverne. On acclame Escamillo, le torero qui s'est couvert de gloire aux dernières courses de Grenade. » Juste après : cris « Escamillo ! » → tu entres à COUR par l'ESCALIER, en TAPANT LES MAINS des choristes, acclamé`, ``, `🥂 Tu entres avec TON VERRE EN CARTON (l'autre main tape celles des choristes). Sur « Votre toast » : TRINQUE contre le verre de Zuniga — « je peux vous le rendre » : tu lui DONNES ton verre (au pied de la lettre !), il reste avec ses deux verres — « car avec les soldats, oui, les toreros peuvent s'entendre » (adresse-toi à lui). Puis mets-toi AU CENTRE sur « Pour le plaisir… » — jeu de séduction de Frasquita et Mercédès autour de toi. 👁 Sur « qu'un œil noir te regarde » : regarde CARMEN, côté jardin (pas à chaque fois — sur « et que l'amour t'attend », regarde ailleurs). Tu BOUGES beaucoup — de femme en femme, avec les chœurs : ton impro. 💘 LA CASCADE DES « L'AMOUR » : pendant ton jeu avec Mercédès, CARMEN prend TA place au centre — son « l'amour » en te regardant → c'est TOI qui vas vers ELLE. « Toréador, l'amour t'attend » ensemble au centre (tu ne la prends PAS ENCORE dans tes bras). 🪑 LA CHAISE de Zuniga : joue avec pendant l'air, tu peux même MONTER dessus (chaise solide, à tester — loin du bord !) — et à la fin, laisse-la SUR UN CÔTÉ, jamais au milieu. 📸 FINAL : tous serrés au centre, FACE AU PUBLIC — Zuniga lève le verre · 🗣 LE DIALOGUE avec Carmen · 🎙 PENDANT LE TEXTE DU NARRATEUR : vous partez TOUS ENSEMBLE, à JARDIN — Frasquita à ton bras gauche, Mercédès au bras droit, Zuniga avec vous — très heureux, disparition derrière les chœurs`],
-      [`(23) Duo avec José (acte 3)`, `Tu surgis à COUR`, ``, `🚧 Pas encore mis à jour (accessoire : le chapeau — pas de vrai trou)`],
+      [`(23) LE DUEL avec José 🔪🔪`, `Tu entres à COUR, juste après la narration du coup de feu — RÉCUPÈRE TON CHAPEAU, mets-le sur ta tête : « Je suis Escamillo, torero de Grenade ! » (José revient de jardin, face à toi)`, `« J'ai l'âme ravie que ce soit vous, Carmen… » : REGARDE-LA très fort (pas de caresse) — puis SORTIE devant tout le monde à COUR, et tu fais LE TOUR derrière les chœurs jusqu'à JARDIN — au N°24, Carmen viendra te RETROUVER là`, `D'abord AMIS (« soyez le bienvenu, mon camarade ») · « Je l'aime à la folie ! » · « il faut payer ? » → « Soit ! on paiera » : SORS LA BOURSE (celle de Micaëla à l'acte 1 — José te la passe en coulisses pendant l'entracte) · José sort sa navaja à moitié cachée — toi PAS ENCORE : « le tour est complet ! » · ⚔️ « METTEZ-VOUS EN GARDE ! » → sors TA navaja, vous les OUVREZ tous les deux · 🐂 LA CORRIDA : José = le taureau, TOI = le toréador — attaque au-dessus de la tête → tu te BAISSES · il revient → tu TOURNES (passe), vous échangez les côtés · encore une passe, encore un échange · toujours DE LOIN, sans contact ! · ⚡ CARMEN arrive de jardin : tu LA VOIS, tu te déconcentres → José en profite → TIENS-LUI LE BRAS → « Holà ! holà ! José ! », elle s'interpose`, ``],
+      [`(24) La reprise au loin 🎶`, `Tu es en coulisses côté JARDIN (après ton tour derrière les chœurs)`, ``, `Chante ta reprise (« Toréador, en garde… l'amour t'attend ») DEPUIS LES COULISSES — la voix au loin, José l'entend et comprend · puis CARMEN te rejoint à jardin : les amants réunis, hors de vue · pendant l'orchestre de l'acte 4 (hors jeu) : vous vous repositionnez pour le cortège du N°26`, ``],
       [`(26) La Marche (acte 4)`, `Cortège avec Carmen par l'ESCALIER — la parade`, ``, `🚧 Pas encore mis à jour`]
     ],
     zuniga: [
@@ -662,7 +684,9 @@
       [`(18) La cape 🧥 — final de l'acte 2`, `N'entre PAS tout de suite : vous arrivez À DEUX (Frasquita + Mercédès) avec LA CAPE NOIRE, pendant « la vie errante… la liberté ! » — José ne vous a pas encore vues`, `Tableau final « la liberté ! » : tous serrés au centre, face au public — vous DEUX côté COUR, José au milieu, Carmen à jardin · dernier accord → vous sortez TOUS EN RIANT par l'ESCALIER, derrière le public, jusqu'aux loges. Puis ENTRACTE (le vrai) !`, `Vous lui REMETTEZ LA CAPE et vous l'aidez à la mettre sur ses épaules : IL EST DES NÔTRES — le baptême du contrebandier · puis tous ensemble : « Suis-nous à travers la campagne, viens avec nous dans la montagne… la liberté ! » — final de l'acte 2, tous rapprochés au centre comme sur le Toréador`],
       [`(19) Acte 3 — le retour des contrebandiers 🤫`, `Vous entrez À DEUX à JARDIN (Frasquita + Mercédès), baissées, en catimini — José puis Carmen sont entrés à cour ; tout le monde se rejoint vers le milieu, en ligne : FRASQUITA · MERCÉDÈS · CARMEN · JOSÉ`, `Pendant la narration : toutes contentes (« bon, on va tirer les cartes ! »), vous filez VOUS INSTALLER À COUR, toutes les deux — sans vous occuper de Carmen et José`, `Vous êtes des contrebandières : regards inquiets, on peut se faire prendre ! · Le jeu du danger : 2-3 fois, sur un accent de la musique, tout le monde SE FIGE baissé — puis ça repart`, `Les contrebandiers s'éloignent. Restées seules, Carmen, Frasquita et Mercédès interrogent les cartes.`],
       [`(20) Le trio des cartes 🃏`, `Vous êtes déjà à COUR, toutes les deux`, `À la fin, PENDANT LA NARRATION (« Le jour se lève… ») : vous sortez TOUTES LES TROIS à JARDIN (vous reviendrez de jardin — Escamillo arrivera à cour) — vous deux tout sourire (« fortune ! fortune ! »), Carmen dépitée : chacune dans son monde`, `EN LIBERTÉ à deux : improvisez comme vous savez le faire — chacune son petit jeu de cartes, complices, heureuses (« un amoureux ! », « un château ! ») · un moment chacune de son côté, un moment ensemble : à régler entre vous, c'est votre moment · à la fin, vous reprenez vos bonnes fortunes (« tout va bien ! ») — Carmen, elle, reste au milieu avec ses cartes sombres`, ``],
-      [`La suite (N°24)`, `🚧 Pas encore mis à jour — la suite arrive (même lien, recharge la page)`, ``, ``]
+      [`(23) Le duel — vous arrivez sur « Holà ! » ⚡`, `Sur le cri de Carmen (« Holà ! holà ! José ! ») : vous arrivez DE JARDIN toutes les deux — le duel s'arrête`, `Tu restes`, `Vous découvrez la scène : José et Escamillo navajas ouvertes, Carmen interposée — restez côté jardin, témoins`, ``],
+      [`(24) Final de l'acte 3`, `Vous êtes en scène`, `Vous sortez à JARDIN, avec Carmen`, `Témoins du déchirement (Micaëla découverte, « ta mère se meurt ») — puis sortie à jardin avec Carmen, pendant que José part à cour avec Micaëla`, ``],
+      [`La suite (acte 4)`, `🚧 Pas encore mis à jour — la suite arrive (même lien, recharge la page)`, ``, ``]
     ],
     mercedes: [
       [`(12) Chanson bohème — ta 1ʳᵉ entrée 💃`, `Vous entrez TOUTES LES TROIS ensemble à COUR (avec Carmen et Frasquita), chacune OUVRE SON ÉVENTAIL en riant`, ``, `Placement pendant l'intro : TOI (Agnès) à JARDIN, Carmen AU MILIEU, Frasquita (Maud) à COUR. Petit concours de danse aux éventails (« moi je suis la plus forte ! ») — impro. La danse MONTE, « ardente, folle, fiévreuse », jusqu'au tourbillon des « tra la la ». À la fin : Zuniga arrive avec un verre et applaudit (à cour, à côté de Frasquita). Pendant le texte du narrateur : Carmen part à jardin et TOI tu la rejoins — tu te places À CÔTÉ DE CARMEN, côté jardin`, `Juste après votre danse : « Soudain, on entend des exclamations qui viennent de l'extérieur de la taverne. On acclame Escamillo, le torero qui s'est couvert de gloire aux dernières courses de Grenade. »`],
@@ -670,7 +694,9 @@
       [`(18) La cape 🧥 — final de l'acte 2`, `N'entre PAS tout de suite : vous arrivez À DEUX (Frasquita + Mercédès) avec LA CAPE NOIRE, pendant « la vie errante… la liberté ! » — José ne vous a pas encore vues`, `Tableau final « la liberté ! » : tous serrés au centre, face au public — vous DEUX côté COUR, José au milieu, Carmen à jardin · dernier accord → vous sortez TOUS EN RIANT par l'ESCALIER, derrière le public, jusqu'aux loges. Puis ENTRACTE (le vrai) !`, `Vous lui REMETTEZ LA CAPE et vous l'aidez à la mettre sur ses épaules : IL EST DES NÔTRES — le baptême du contrebandier · puis tous ensemble : « Suis-nous à travers la campagne, viens avec nous dans la montagne… la liberté ! » — final de l'acte 2, tous rapprochés au centre comme sur le Toréador`],
       [`(19) Acte 3 — le retour des contrebandiers 🤫`, `Vous entrez À DEUX à JARDIN (Frasquita + Mercédès), baissées, en catimini — José puis Carmen sont entrés à cour ; tout le monde se rejoint vers le milieu, en ligne : FRASQUITA · MERCÉDÈS · CARMEN · JOSÉ`, `Pendant la narration : toutes contentes (« bon, on va tirer les cartes ! »), vous filez VOUS INSTALLER À COUR, toutes les deux — sans vous occuper de Carmen et José`, `Vous êtes des contrebandières : regards inquiets, on peut se faire prendre ! · Le jeu du danger : 2-3 fois, sur un accent de la musique, tout le monde SE FIGE baissé — puis ça repart`, `Les contrebandiers s'éloignent. Restées seules, Carmen, Frasquita et Mercédès interrogent les cartes.`],
       [`(20) Le trio des cartes 🃏`, `Vous êtes déjà à COUR, toutes les deux`, `À la fin, PENDANT LA NARRATION (« Le jour se lève… ») : vous sortez TOUTES LES TROIS à JARDIN (vous reviendrez de jardin — Escamillo arrivera à cour) — vous deux tout sourire (« fortune ! fortune ! »), Carmen dépitée : chacune dans son monde`, `EN LIBERTÉ à deux : improvisez comme vous savez le faire — chacune son petit jeu de cartes, complices, heureuses (« un amoureux ! », « un château ! ») · un moment chacune de son côté, un moment ensemble : à régler entre vous, c'est votre moment · à la fin, vous reprenez vos bonnes fortunes (« tout va bien ! ») — Carmen, elle, reste au milieu avec ses cartes sombres`, ``],
-      [`La suite (N°24)`, `🚧 Pas encore mis à jour — la suite arrive (même lien, recharge la page)`, ``, ``]
+      [`(23) Le duel — vous arrivez sur « Holà ! » ⚡`, `Sur le cri de Carmen (« Holà ! holà ! José ! ») : vous arrivez DE JARDIN toutes les deux — le duel s'arrête`, `Tu restes`, `Vous découvrez la scène : José et Escamillo navajas ouvertes, Carmen interposée — restez côté jardin, témoins`, ``],
+      [`(24) Final de l'acte 3`, `Vous êtes en scène`, `Vous sortez à JARDIN, avec Carmen`, `Témoins du déchirement (Micaëla découverte, « ta mère se meurt ») — puis sortie à jardin avec Carmen, pendant que José part à cour avec Micaëla`, ``],
+      [`La suite (acte 4)`, `🚧 Pas encore mis à jour — la suite arrive (même lien, recharge la page)`, ``, ``]
     ]
   };
 
@@ -788,7 +814,11 @@
     n18b: `2️⃣ JOSÉ REVIENT EN CHEMISE — « Es-tu des nôtres ? » + la cape des filles`,
     n18fin: `3️⃣ 📸 TABLEAU FINAL « la liberté ! » — puis TOUS sortent par l'escalier`,
     n19: `1️⃣ LES ENTRÉES — José puis Carmen à cour, Frasquita et Mercédès à jardin`,
-    n19fin: `2️⃣ 📸 « Écoute, compagnon » EN LIGNE — puis la main devant : José part, les deux filent à cour`
+    n19fin: `2️⃣ 📸 « Écoute, compagnon » EN LIGNE — puis la main devant : José part, les deux filent à cour`,
+    n23: `1️⃣ FACE À FACE — Escamillo entre à cour, José revient de jardin (Micaëla reste cachée)`,
+    n23b: `2️⃣ 🐂 LA CORRIDA — les passes : à chaque attaque de José, Escamillo tourne et ils échangent les côtés`,
+    n23fin: `3️⃣ « HOLÀ ! » — Carmen s'interpose, les filles arrivent — puis Escamillo sort et fait le tour vers jardin`,
+    n24: `LES SORTIES — José part à cour avec Micaëla, Carmen rejoint Escamillo à jardin`
   };
   // Personnages postés (immobiles, sans flèche) sur la plateforme
   const POSITIONS = {
@@ -853,7 +883,10 @@
     n19fin: [{ perso: 'frasquita', label: 'FRASQUITA', poste: true, ax: 138, ay: 160, lx: 138, ly: 136 }, { perso: 'mercedes', label: 'MERCÉDÈS', poste: true, ax: 176, ay: 160, lx: 172, ly: 112 }, { perso: 'carmen', label: 'CARMEN', poste: true, ax: 214, ay: 160, lx: 216, ly: 136 }, { perso: 'jose', label: 'JOSÉ', poste: true, ax: 252, ay: 160, lx: 254, ly: 112 }],
     n20:   [{ perso: 'carmen', label: 'CARMEN 🃏 seule', poste: 'centre', lx: 178 }, { perso: 'frasquita', label: 'FRASQUITA', poste: true, ax: 286, ay: 160, lx: 286, ly: 136 }, { perso: 'mercedes', label: 'MERCÉDÈS', poste: true, ax: 324, ay: 160, lx: 326, ly: 112 }, { perso: 'jose', label: 'JOSÉ parti guetter', from: 'sortiegauche', d: 'M 186,172 C 140,190 95,184 62,152', lx: 118, ly: 207 }],
     n22:   [{ perso: 'micaela', label: 'MICAËLA', from: 'cour' }, { perso: 'micaela', label: 'à la fin : SE CACHE en coulisses 🤫', poste: true, ax: 372, ay: 64, lx: 280, ly: 92 }],
-    n23:   [{ perso: 'escamillo', label: 'ESCAMILLO', from: 'cour' }],
+    n23:   [{ perso: 'escamillo', label: 'ESCAMILLO 🎩', from: 'cour' }, { perso: 'jose', label: 'JOSÉ revient', from: 'jardin', lx: 92, ly: 120 }, { perso: 'micaela', label: 'MICAËLA cachée 🤫', poste: true, ax: 372, ay: 64, lx: 288, ly: 92 }],
+    n23b:  [{ perso: 'jose', label: 'JOSÉ = le taureau 🐂', from: 'coulisse', d: 'M 130,164 C 190,186 260,186 310,166', lx: 128, ly: 200 }, { perso: 'escamillo', label: 'ESCAMILLO = le toréador', from: 'coulisse', d: 'M 310,152 C 260,132 190,132 132,150', lx: 258, ly: 116 }],
+    n23fin: [{ perso: 'jose', label: 'JOSÉ', poste: true, ax: 152, ay: 160, lx: 152, ly: 136 }, { perso: 'carmen', label: 'CARMEN s\'interpose !', poste: true, ax: 196, ay: 160, lx: 214, ly: 112 }, { perso: 'escamillo', label: 'ESCAMILLO', poste: true, ax: 240, ay: 160, lx: 254, ly: 136 }, { label: 'FRASQUITA + MERCÉDÈS', from: 'jardin', lx: 108, ly: 108 }, { perso: 'escamillo', label: 'LE TOUR 🔄 vers jardin', from: 'sortie', d: 'M 252,146 C 300,112 330,72 250,64 C 180,58 125,62 92,68', lx: 310, ly: 216 }],
+    n24:   [{ perso: 'micaela', label: 'MICAËLA découverte', from: 'cour', lx: 300, ly: 140 }, { perso: 'jose', label: 'JOSÉ + MICAËLA → sa mère', from: 'sortie', d: 'M 210,166 C 280,180 340,180 372,196', lx: 262, ly: 207 }, { perso: 'carmen', label: 'CARMEN → retrouve ESCAMILLO', from: 'sortiegauche', d: 'M 186,168 C 130,180 80,160 62,120', lx: 118, ly: 190 }, { perso: 'escamillo', label: 'ESCAMILLO 🎶', poste: true, ax: 62, ay: 64, lx: 130, ly: 92 }],
     n26:   [{ perso: 'escamillo', label: 'CORTÈGE', from: 'escalier' }]
   };
 
@@ -881,7 +914,15 @@
             { src: 'audio/15b-n17-air-de-la-fleur.mp3', titre: 'N°17 — L\'air de la Fleur' },
             { src: 'audio/16-n17-fin-montagne.mp3', titre: 'N°17 fin — « Là-bas dans la montagne »' }],
     nar5:  [{ src: 'audio/16b-narration-5.mp3', titre: '5ᵉ narration — Survient le capitaine Zuniga', vert: true }],
-    n18:   [{ src: 'audio/17-n18-final-acte2.mp3', titre: 'N°18 — Final de l\'acte 2 : la désertion' }]
+    n18:   [{ src: 'audio/17-n18-final-acte2.mp3', titre: 'N°18 — Final de l\'acte 2 : la désertion' }],
+    orch3: [{ src: 'audio/18-acte3-orchestre.mp3', titre: 'Acte 3 — Orchestre (personne en scène)' }],
+    n19:   [{ src: 'audio/19-n19-contrebandiers.mp3', titre: 'N°19 — Le retour des contrebandiers' }],
+    nar6:  [{ src: 'audio/19b-narration-6.mp3', titre: '6ᵉ narration — Les contrebandiers s\'éloignent (la main devant)', vert: true }],
+    n20:   [{ src: 'audio/20-n20-cartes.mp3', titre: 'N°20 — Le trio des cartes' }],
+    nar7:  [{ src: 'audio/20b-narration-7.mp3', titre: '7ᵉ narration — Le jour se lève (l\'entrée de Micaëla)', vert: true }],
+    n22:   [{ src: 'audio/21-n22-micaela.mp3', titre: 'N°22 — L\'air de Micaëla (applaudissements inclus)' }],
+    nar8:  [{ src: 'audio/21b-narration-8.mp3', titre: '8ᵉ narration — Don José tire (le chapeau)', vert: true }],
+    n23:   [{ src: 'audio/22-n23-duel.mp3', titre: 'N°23 — Le duel Escamillo-José' }]
   };
   function blocAudio(note) {
     const liste = AUDIOS[note];
@@ -893,8 +934,8 @@
       </div>`).join('');
   }
   // Sur les cartes personnelles : la narration d'avant et celle d'après entourent la musique du moment
-  const NAR_AVANT = { n10: 'nar1', n12: 'nar2', n14: 'nar3', n17: 'nar4', n18: 'nar5' };
-  const NAR_APRES = { n8: 'nar1', n10: 'nar2', n12: 'nar3', n14: 'nar4', n17: 'nar5' };
+  const NAR_AVANT = { n10: 'nar1', n12: 'nar2', n14: 'nar3', n17: 'nar4', n18: 'nar5', n20: 'nar6', n22: 'nar7', n23: 'nar8' };
+  const NAR_APRES = { n8: 'nar1', n10: 'nar2', n12: 'nar3', n14: 'nar4', n17: 'nar5', n19: 'nar6', n20: 'nar7', n22: 'nar8' };
   function audioDeCarte(note) {
     if (!note) return '';
     return blocAudio(NAR_AVANT[note]) + blocAudio(note) + blocAudio(NAR_APRES[note]);
@@ -994,23 +1035,23 @@
 
   // Schéma associé à chaque carte de la feuille (même index que FEUILLES)
   const PLANS_FEUILLE = {
-    carmen:    [null, 'n5', 'n6', 'n8', 'n10', 'n12', 'n14', 'n17', ['n18', 'n18b', 'n18fin'], ['n19', 'n19fin'], 'n20', null],
-    jose:      ['n5', 'n6', 'n6bis', null, 'n8', 'n10', 'n17', ['n18', 'n18b', 'n18fin'], ['n19', 'n19fin'], null],
-    micaela:   ['n6bis', null, 'n22', null],
-    escamillo: ['n14', 'n23', 'n26'],
+    carmen:    [null, 'n5', 'n6', 'n8', 'n10', 'n12', 'n14', 'n17', ['n18', 'n18b', 'n18fin'], ['n19', 'n19fin'], 'n20', ['n23fin'], 'n24', null],
+    jose:      ['n5', 'n6', 'n6bis', null, 'n8', 'n10', 'n17', ['n18', 'n18b', 'n18fin'], ['n19', 'n19fin'], ['n23', 'n23b', 'n23fin'], 'n24', null],
+    micaela:   ['n6bis', null, 'n22', 'n24'],
+    escamillo: ['n14', ['n23', 'n23b', 'n23fin'], 'n24', 'n26'],
     zuniga:    ['n1', 'n8', 'n10', 'n12', 'n14', 'n18', null],
-    frasquita: ['n12', 'n14', ['n18b', 'n18fin'], ['n19', 'n19fin'], 'n20', null],
-    mercedes:  ['n12', 'n14', ['n18b', 'n18fin'], ['n19', 'n19fin'], 'n20', null]
+    frasquita: ['n12', 'n14', ['n18b', 'n18fin'], ['n19', 'n19fin'], 'n20', ['n23fin'], 'n24', null],
+    mercedes:  ['n12', 'n14', ['n18b', 'n18fin'], ['n19', 'n19fin'], 'n20', ['n23fin'], 'n24', null]
   };
   // Carte détaillée du déroulé associée à chaque carte de la feuille
   const DETAILS_FEUILLE = {
-    carmen:    [null, 'n5', 'n6', 'n8', 'n10', 'n12', 'n14', 'n17', 'n18', 'n19', 'n20', null],
-    jose:      ['n5', 'n6', 'n6bis', 'n7', 'n8', 'n10', 'n17', 'n18', 'n19', null],
-    micaela:   ['n6bis', 'n7', 'n22', null],
-    escamillo: ['n14', 'n23', 'n26'],
+    carmen:    [null, 'n5', 'n6', 'n8', 'n10', 'n12', 'n14', 'n17', 'n18', 'n19', 'n20', 'n23', 'n24', null],
+    jose:      ['n5', 'n6', 'n6bis', 'n7', 'n8', 'n10', 'n17', 'n18', 'n19', 'n23', 'n24', null],
+    micaela:   ['n6bis', 'n7', 'n22', 'n24'],
+    escamillo: ['n14', 'n23', 'n24', 'n26'],
     zuniga:    ['n1', 'n8', 'n10', 'n12', 'n14', 'n18', null],
-    frasquita: ['n12', 'n14', 'n18', 'n19', 'n20', null],
-    mercedes:  ['n12', 'n14', 'n18', 'n19', 'n20', null]
+    frasquita: ['n12', 'n14', 'n18', 'n19', 'n20', 'n23', 'n24', null],
+    mercedes:  ['n12', 'n14', 'n18', 'n19', 'n20', 'n23', 'n24', null]
   };
   let detailMoment = false;
 
