@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -776,10 +776,13 @@
     const t = TRAJETS[move.from];
     const c = COULEURS[move.from];
     const cPerso = p ? p.couleur : c;
-    const dash = move.from.startsWith('sortie') ? 'stroke-dasharray="6,5"' : '';
+    const estSortie = move.from.startsWith('sortie');
+    const dash = estSortie ? 'stroke-dasharray="6,5"' : '';
+    // Les sorties prennent la couleur du personnage qui sort (on sait QUI part)
+    const cFleche = (estSortie && p) ? cPerso : c;
     const avatar = (p && t.ax) ? medaillon(move.perso, t.ax, t.ay, cPerso) : '';
     return `
-      <path d="${t.d}" fill="none" stroke="${c}" stroke-width="4" marker-end="url(#fleche)" ${dash}/>
+      <path d="${move.d || t.d}" fill="none" stroke="${cFleche}" stroke-width="4" marker-end="url(#fleche)" ${dash}/>
       ${avatar}${pilule(move.label, move.lx || t.lx, move.ly || t.ly, cPerso)}`;
   }
   const PLANS = {
@@ -788,7 +791,7 @@
     n6:    [{ perso: 'jose', label: 'JOSÉ', poste: 'centre' }, { perso: 'carmen', label: 'vers le public !', from: 'sortiepublic' }],
     n6bis: [{ perso: 'jose', label: 'JOSÉ', poste: 'jardin' }, { perso: 'micaela', label: 'MICAËLA', from: 'cour' }],
     n8:    [{ perso: 'zuniga', label: 'ZUNIGA', from: 'jardin' }, { perso: 'jose', label: 'JOSÉ', from: 'cour', lx: 330, ly: 174 }, { perso: 'carmen', label: 'du public', from: 'escalier', lx: 290, ly: 140 }, { perso: 'narrateur', poste: 'narrateur' }],
-    n10:   [{ perso: 'jose', label: 'JOSÉ', poste: 'centre' }, { perso: 'carmen', label: 'CARMEN', poste: 'centre2' }, { perso: 'zuniga', label: 'ZUNIGA', from: 'cour' }, { perso: 'carmen', label: 'fuite CARMEN', from: 'sortiegauche', lx: 130, ly: 208 }, { perso: 'narrateur', poste: 'narrateur' }],
+    n10:   [{ perso: 'jose', label: 'JOSÉ', poste: 'centre' }, { perso: 'carmen', label: 'CARMEN', poste: 'centre2' }, { perso: 'zuniga', label: 'ZUNIGA', from: 'cour' }, { perso: 'carmen', label: 'fuite CARMEN', from: 'sortiegauche', d: 'M 240,172 C 160,190 62,165 52,100', lx: 130, ly: 208 }, { perso: 'narrateur', poste: 'narrateur' }],
     n12:   [{ from: 'cour' }, { perso: 'mercedes', label: 'MERCÉDÈS', poste: 'jardin' }, { perso: 'carmen', label: 'CARMEN', poste: 'centre' }, { perso: 'frasquita', label: 'FRASQUITA', poste: 'cour' }],
     n14:   [{ from: 'escalier' }, { perso: 'carmen', label: 'CARMEN', poste: true, ax: 96, ay: 160, lx: 96, ly: 136 }, { perso: 'mercedes', label: 'MERCÉDÈS', poste: true, ax: 150, ay: 160, lx: 150, ly: 112 }, { perso: 'escamillo', label: 'ESCAMILLO', poste: true, ax: 210, ay: 160, lx: 210, ly: 136 }, { perso: 'frasquita', label: 'FRASQUITA', poste: true, ax: 280, ay: 160, lx: 280, ly: 112 }, { perso: 'zuniga', label: 'ZUNIGA', poste: true, ax: 340, ay: 160, lx: 340, ly: 136 }],
     n14fin: [{ perso: 'mercedes', label: 'MERCÉDÈS', poste: true, ax: 130, ay: 160, lx: 130, ly: 112 }, { perso: 'carmen', label: 'CARMEN', poste: true, ax: 172, ay: 160, lx: 172, ly: 136 }, { perso: 'escamillo', label: 'ESCAMILLO', poste: true, ax: 210, ay: 160, lx: 214, ly: 112 }, { perso: 'frasquita', label: 'FRASQUITA', poste: true, ax: 252, ay: 160, lx: 256, ly: 136 }, { perso: 'zuniga', label: 'ZUNIGA 🥂', poste: true, ax: 294, ay: 160, lx: 300, ly: 112 }],
