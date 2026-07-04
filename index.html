@@ -195,6 +195,9 @@
   .coupure { font-size: 0.92rem; color: var(--or); font-style: italic; }
   .plan-scene { text-align: center; margin: 10px 0 4px; }
   .plan-scene svg { width: 100%; height: auto; }
+  .audio-bloc { background: #fffdf7; border: 2px solid var(--or); border-radius: 12px; padding: 10px 12px; margin: 12px 0; }
+  .audio-bloc .audio-titre { font-weight: bold; color: #7a5a10; margin-bottom: 6px; font-size: 1rem; }
+  .audio-bloc audio { width: 100%; height: 46px; }
   .notes {
     margin-top: 10px; padding: 10px 12px; min-height: 40px;
     background: #fdf7dd; border-radius: 10px;
@@ -821,6 +824,28 @@
     n26:   [{ perso: 'escamillo', label: 'CORTÈGE', from: 'escalier' }]
   };
 
+  // ================== ENREGISTREMENTS (concert de Carry-le-Rouet, 11 janvier 2026) ==================
+  const AUDIOS = {
+    prelude: [{ src: 'audio/01-prelude.mp3', titre: 'Prélude (orchestre)' }],
+    n1:    [{ src: 'audio/02-n1-morales.mp3', titre: 'N°1 — Moralès « Sur la place, chacun passe »' }],
+    n3:    [{ src: 'audio/03-n3-enfants.mp3', titre: 'N°3 — La garde montante (les enfants)' }],
+    n4:    [{ src: 'audio/04-n4-hommes-cigarieres.mp3', titre: 'N°4 — Les hommes et les cigarières' }],
+    n5:    [{ src: 'audio/05-n5-entree-carmen.mp3', titre: 'N°5 — L\'entrée de Carmen (récitatif et chœur)' },
+            { src: 'audio/06-n5-habanera.mp3', titre: 'N°5 — Habanera « L\'amour est un oiseau rebelle »' }],
+    n6:    [{ src: 'audio/07-n6-la-rose.mp3', titre: 'N°6 — « Carmen ! sur tes pas » + la rose' }],
+    n6bis: [{ src: 'audio/08-n6bis-jose-micaela.mp3', titre: 'N°6bis — José seul, puis l\'arrivée de Micaëla' }],
+    n7:    [{ src: 'audio/09-n7-duo-mere.mp3', titre: 'N°7 — Duo « Parle-moi de ma mère »' }]
+  };
+  function blocAudio(note) {
+    const liste = AUDIOS[note];
+    if (!liste) return '';
+    return liste.map(a => `
+      <div class="audio-bloc">
+        <div class="audio-titre">🎧 ${a.titre}</div>
+        <audio controls preload="none" src="${a.src}"></audio>
+      </div>`).join('');
+  }
+
   // ================== CONSTRUCTION DE LA PAGE ==================
   function avatarsDe(persos, taille) {
     return persos.map(p =>
@@ -837,7 +862,7 @@
     if (s.type === 'acte') {
       html += `<h2 class="acte">${s.titre}</h2>`;
     } else if (s.type === 'info') {
-      html += `<div class="carte-info" data-persos="">${s.texte}</div>`;
+      html += `<div class="carte-info" data-persos="">${s.texte}${blocAudio(s.note)}</div>`;
     } else if (s.type === 'alerte') {
       html += `<div data-persos="carmen jose micaela escamillo zuniga frasquita mercedes narrateur" style="background:#ffe600; border:4px solid #c05621; border-radius:14px; padding:16px 18px; margin:22px 0; text-align:center; font-size:1.15rem; font-weight:bold; color:#4a0808; box-shadow:0 2px 8px rgba(192,86,33,0.35);">${s.texte}</div>`;
     } else if (s.type === 'narrateur') {
@@ -865,7 +890,7 @@
           <div class="quand">⚡ QUAND : ${s.quand}</div>
           <div class="jetons">${jetons}</div>
           <div class="action">${s.action}</div>
-          ${jeu}${fin}${plan}${plan2}${coupure}
+          ${jeu}${fin}${plan}${plan2}${coupure}${blocAudio(s.note)}
           <div class="notes" contenteditable="true" data-note="${s.note}"></div>
         </div>`;
     }
@@ -962,11 +987,13 @@
         (PLAN_TITRES[id] ? `<div style="text-align:center; font-weight:bold; color:var(--rouge); margin:8px 6px 0; font-size:0.95rem;">${PLAN_TITRES[id]}</div>` : '') +
         `<div class="plan-scene" style="padding:6px 8px 2px; background:#fdf9ee;"><svg viewBox="0 25 400 240" xmlns="http://www.w3.org/2000/svg">${basePlan()}${PLANS[id].map(fleche).join('')}</svg></div>`
       ).join('');
+      const noteCarte = (DETAILS_FEUILLE[roleCourant] || [])[carteIndex];
+      const audioCarte = noteCarte ? blocAudio(noteCarte) : '';
       corps = `
         <div class="carte-moment" style="border-color:${p.couleur}">
           <div class="cm-titre" style="background:${p.couleur}">🎵 ${r[0]}</div>
           <table class="cm-table">${ligneTableau(r)}</table>
-          ${schema}
+          ${schema}${audioCarte}
         </div>
         <div class="cm-nav">
           <button onclick="cartePrecedente()" ${carteIndex === 0 ? 'disabled' : ''}>◀ Avant</button>
@@ -1063,6 +1090,14 @@
     if (sauvegarde) zone.innerHTML = sauvegarde;
     zone.addEventListener('input', () => localStorage.setItem(cle, zone.innerHTML));
   });
+
+  // ================== UN SEUL LECTEUR À LA FOIS ==================
+  // Quand une piste démarre, toutes les autres se mettent en pause automatiquement
+  document.addEventListener('play', e => {
+    if (e.target && e.target.tagName === 'AUDIO') {
+      document.querySelectorAll('audio').forEach(a => { if (a !== e.target) a.pause(); });
+    }
+  }, true);
 
   // ================== LIEN DIRECT PAR PERSONNE (ex. …/#carmen) ==================
   const hash = location.hash.replace('#', '');
