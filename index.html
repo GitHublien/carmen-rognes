@@ -564,13 +564,14 @@
     { type: 'narrateur', texte: `Le jour se lève. Pendant que les contrebandiers vont opérer, Don José est chargé de veiller sur le campement. Micaëla avance dans la montagne à la recherche de Don José mais ne le trouve pas.`, apres: 'après le N°20' },
 
     { type: 'scene', num: 'N°22 — Air de Micaëla 🙏', persos: ['micaela'],
-      quand: `Après la narration (« Le jour se lève… Micaëla avance dans la montagne »)`,
-      jetons: [['cour', '⚡ MICAËLA ENTRE À COUR — elle cherche Don José ➡']],
+      quand: `⚡ PENDANT LA NARRATION : dès que le narrateur dit son nom (« Micaëla avance dans la montagne… »), elle entre`,
+      jetons: [['cour', '⚡ MICAËLA ENTRE À COUR, pendant la narration — elle cherche Don José ➡']],
       action: `<b>Micaëla</b> seule — montée dans la montagne pour retrouver Don José : « Je dis que rien ne m'épouvante ».`,
-      jeu: [`Elle entre à COUR, inquiète, elle <b>CHERCHE José partout</b> — et elle chante son air, seule en scène`,
-            `🤫 <b>À LA FIN DE SON AIR : elle SE CACHE, VITE — mais À VUE</b> : elle ne sort PAS de scène (accroupie côté cour — l'endroit exact se calera sur place)`,
-            `⚠️ Chez nous, <b>PAS de coup de feu</b> : c'est la narration qui raconte le tir de José — Micaëla se cache dès son air fini, et la scène du chapeau s'enchaîne`],
-      fin: `Micaëla cachée à vue — la narration (« Don José, avisant un inconnu qui s'approche, tire… ») lance l'arrivée d'Escamillo.`,
+      jeu: [`⚡ Elle entre à COUR <b>PENDANT LA NARRATION, pile quand le narrateur parle d'elle</b> — inquiète, elle <b>CHERCHE José partout</b>`,
+            `🎶 <b>SON AIR, EN LIBERTÉ TOTALE : elle chante comme elle le désire — c'est elle qui décide, c'est son moment</b>`,
+            `🤫 <b>À LA FIN DE SON AIR : quelque chose cloche… elle ENTEND UN BRUIT → elle va SE CACHER, vite</b> — en coulisses côté COUR (elle reviendra à cour quand on la découvrira)`,
+            `⚠️ Chez nous, <b>PAS de coup de feu</b> : c'est la narration qui raconte le tir de José — Micaëla est déjà cachée, et la scène du chapeau s'enchaîne`],
+      fin: `Micaëla cachée en coulisses côté cour — la narration (« Don José, avisant un inconnu qui s'approche, tire… ») lance l'arrivée d'Escamillo.`,
       plan: 'n22', note: 'n22' },
 
     { type: 'alerte', texte: `🚧 ATTENTION : À PARTIR D'ICI, CE N'EST PAS ENCORE MIS À JOUR 🚧<br><span style="font-weight:normal;font-size:0.95rem;">La mise en espace est réglée jusqu'au N°22 (l'air de Micaëla, ci-dessus). Ce qui suit n'est qu'une première ébauche : ne rien apprendre de définitif ici, la suite arrive.</span>` },
@@ -638,7 +639,7 @@
     micaela: [
       [`(6 bis) Ton arrivée`, `À COUR, un peu AVANT ta phrase : tu entres, tu le cherches, tu LE VOIS → « José ! »`, ``, `Il vient vers toi : « Me voici ! — Quelle joie ! — C'est votre mère qui m'envoie »`],
       [`(7) Duo « Parle-moi de ma mère »`, `En scène`, `Vous sortez ENSEMBLE à COUR, assez vite`, `En liberté avec Valentin — les gestes suivent le texte : tu donnes LA LETTRE, LA BOURSE, et tu transmets LE BAISER de sa mère (« vraiment, je n'ose… »)`],
-      [`(22) Ton air — « Je dis que rien ne m'épouvante » 🙏`, `Tu entres à COUR, après la narration — inquiète, tu CHERCHES José partout`, `À LA FIN DE TON AIR : tu te caches VITE, mais À VUE — tu ne sors PAS de scène (accroupie côté cour, l'endroit exact se calera sur place)`, `Ton air, seule en scène — en liberté, tu sais le porter · ⚠️ chez nous PAS de coup de feu : c'est la narration qui raconte le tir de José, toi tu es déjà cachée`, `Le jour se lève. Pendant que les contrebandiers vont opérer, Don José est chargé de veiller sur le campement. Micaëla avance dans la montagne à la recherche de Don José mais ne le trouve pas.`],
+      [`(22) Ton air — « Je dis que rien ne m'épouvante » 🙏`, `⚡ Tu entres à COUR PENDANT LA NARRATION — pile quand le narrateur dit ton nom (« Micaëla avance dans la montagne… ») — inquiète, tu CHERCHES José partout`, `À LA FIN DE TON AIR : quelque chose cloche, tu ENTENDS UN BRUIT → tu vas te cacher VITE, en coulisses côté COUR — tu reviendras à cour quand on te découvrira`, `TON AIR, EN LIBERTÉ TOTALE : tu chantes comme tu le désires, c'est toi qui décides — c'est ton moment · ⚠️ chez nous PAS de coup de feu : la narration raconte le tir de José, toi tu es déjà cachée`, `Le jour se lève. Pendant que les contrebandiers vont opérer, Don José est chargé de veiller sur le campement. Micaëla avance dans la montagne à la recherche de Don José mais ne le trouve pas.`],
       [`La suite (N°24)`, `🚧 Pas encore mis à jour — la suite arrive (même lien)`, ``, ``]
     ],
     escamillo: [
@@ -851,7 +852,7 @@
     n19:   [{ perso: 'jose', label: 'JOSÉ — 1ᵉʳ, il guette', from: 'cour', lx: 296, ly: 140 }, { perso: 'carmen', label: 'CARMEN le suit', from: 'coulisse', d: 'M 352,104 C 372,134 344,164 282,174', lx: 322, ly: 184 }, { label: 'FRASQUITA + MERCÉDÈS 🤫', from: 'jardin', lx: 118, ly: 120 }],
     n19fin: [{ perso: 'frasquita', label: 'FRASQUITA', poste: true, ax: 138, ay: 160, lx: 138, ly: 136 }, { perso: 'mercedes', label: 'MERCÉDÈS', poste: true, ax: 176, ay: 160, lx: 172, ly: 112 }, { perso: 'carmen', label: 'CARMEN', poste: true, ax: 214, ay: 160, lx: 216, ly: 136 }, { perso: 'jose', label: 'JOSÉ', poste: true, ax: 252, ay: 160, lx: 254, ly: 112 }],
     n20:   [{ perso: 'carmen', label: 'CARMEN 🃏 seule', poste: 'centre', lx: 178 }, { perso: 'frasquita', label: 'FRASQUITA', poste: true, ax: 286, ay: 160, lx: 286, ly: 136 }, { perso: 'mercedes', label: 'MERCÉDÈS', poste: true, ax: 324, ay: 160, lx: 326, ly: 112 }, { perso: 'jose', label: 'JOSÉ parti guetter', from: 'sortie', d: 'M 214,172 C 260,192 330,196 366,178', lx: 290, ly: 207 }],
-    n22:   [{ perso: 'micaela', label: 'MICAËLA', from: 'cour' }, { perso: 'micaela', label: 'à la fin : SE CACHE 🤫', poste: true, ax: 352, ay: 176, lx: 288, ly: 205 }],
+    n22:   [{ perso: 'micaela', label: 'MICAËLA', from: 'cour' }, { perso: 'micaela', label: 'à la fin : SE CACHE en coulisses 🤫', poste: true, ax: 372, ay: 64, lx: 280, ly: 92 }],
     n23:   [{ perso: 'escamillo', label: 'ESCAMILLO', from: 'jardin' }],
     n26:   [{ perso: 'escamillo', label: 'CORTÈGE', from: 'escalier' }]
   };
