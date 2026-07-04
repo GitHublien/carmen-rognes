@@ -274,6 +274,9 @@
     <span class="jeton cour">COUR = droite du public ➡</span>
     <span class="jeton escalier">🪜 ESCALIER (à cour)</span>
   </div>
+  <div class="legende-dir" style="font-size:0.95rem;">
+    Sur les schémas : chaque flèche a la <b>couleur de son personnage</b> · trait plein ➜ entrée · pointillés ┈➜ sortie
+  </div>
   <div style="background:#fff3cd; border:2px solid #c05621; border-radius:10px; padding:10px 14px; margin:10px 0; font-size:1rem;">
     ⚠️ <b>IMPORTANT — il n'y a PAS de sortie à jardin : côté jardin, c'est LE MUR (confirmé, aucun doute).</b> « Sortir à jardin » veut toujours dire : disparaître côté jardin puis <b>passer DERRIÈRE les chœurs</b> (couloir caché) pour se retrouver côté cour. La seule vraie sortie du plateau est <b>l'escalier, à cour</b>. <i>Reste à confirmer demain : la position exacte de l'escalier (en début de scène ? au milieu ? derrière ?).</i>
   </div>
@@ -778,8 +781,8 @@
     const cPerso = p ? p.couleur : c;
     const estSortie = move.from.startsWith('sortie');
     const dash = estSortie ? 'stroke-dasharray="6,5"' : '';
-    // Les sorties prennent la couleur du personnage qui sort (on sait QUI part)
-    const cFleche = (estSortie && p) ? cPerso : c;
+    // Chaque flèche prend la couleur de SON personnage (médaillon, étiquette et flèche assortis)
+    const cFleche = p ? cPerso : c;
     const avatar = (p && t.ax) ? medaillon(move.perso, t.ax, t.ay, cPerso) : '';
     return `
       <path d="${move.d || t.d}" fill="none" stroke="${cFleche}" stroke-width="4" marker-end="url(#fleche)" ${dash}/>
