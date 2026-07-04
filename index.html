@@ -468,7 +468,7 @@
 
     { type: 'narrateur', texte: `Soudain, on entend des exclamations qui viennent de l'extérieur de la taverne. On acclame Escamillo, le torero qui s'est couvert de gloire aux dernières courses de Grenade.`, apres: 'après le N°12', note: 'nar3' },
 
-    { type: 'scene', num: 'N°14 — L'air du Toréador ⭐', persos: ['escamillo', 'carmen', 'frasquita', 'mercedes', 'zuniga'],
+    { type: 'scene', num: 'N°14 — L\'air du Toréador ⭐', persos: ['escamillo', 'carmen', 'frasquita', 'mercedes', 'zuniga'],
       quand: `Juste après l'annonce du narrateur — cris : « Escamillo ! Escamillo ! » — tout le monde l'acclame… SAUF Carmen`,
       jetons: [['escalier', '🪜 ESCAMILLO ENTRE À COUR PAR L\'ESCALIER — en TAPANT LES MAINS des choristes, acclamé']],
       action: `L'arrivée du toréador : <b>Escamillo</b> (Mickaël). Tout se passe à COUR — à ce moment du spectacle, personne n'arrive par jardin.`,
@@ -487,7 +487,7 @@
       fin: `🎙 PENDANT LE TEXTE DU NARRATEUR : <b>ils partent TOUS ENSEMBLE, à JARDIN</b> — <b>Frasquita au bras gauche d'Escamillo, Mercédès au bras droit</b>, Zuniga part avec eux — tous TRÈS heureux, comme des enfants qui partent à la fête, ils disparaissent derrière les chœurs. <b>CARMEN RESTE.</b> Dès qu'on ne les voit plus : elle récupère <b>LA CHAISE là où elle se trouve</b> (vers l'arrière-cour) et <b>la met AU MILIEU</b> — et au même moment, José arrive avec la musique — <b>aucun croisement</b> (eux à jardin, lui à cour).`,
       plan: 'n14', plan2: 'n14fin', note: 'n14' },
 
-    { type: 'narrateur', texte: `Don José, tout juste sorti de prison, fait son entrée au moment où tous les autres, sauf Carmen, quittent la taverne.`, apres: 'après le N°14' },
+    { type: 'narrateur', texte: `Don José, tout juste sorti de prison, fait son entrée au moment où tous les autres, sauf Carmen, quittent la taverne.`, apres: 'après le N°14', note: 'nar4' },
 
     { type: 'scene', num: 'N°17 — Duo : la danse, la dispute et la Fleur 🪑🌹', persos: ['carmen', 'jose'],
       quand: `Les autres viennent de disparaître à jardin — Carmen a mis LA CHAISE au milieu`,
@@ -508,7 +508,7 @@
       fin: `SORTIES : José, très énervé, <b>RÉCUPÈRE LA CHAISE d'un geste rageur et sort À JARDIN</b> — <b>Carmen sort À COUR</b>. <b>SCÈNE VIDE</b> pour le texte du narrateur. (Transition vers le N°18 — cape noire, pantomime pendant la narration — en discussion.)`,
       plan: 'n17', note: 'n17' },
 
-    { type: 'narrateur', texte: `Survient le capitaine Zuniga venu courtiser Carmen. Don José s'emporte. Les contrebandiers surgissent et désarment le capitaine.`, apres: 'après le N°17' },
+    { type: 'narrateur', texte: `Survient le capitaine Zuniga venu courtiser Carmen. Don José s'emporte. Les contrebandiers surgissent et désarment le capitaine.`, apres: 'après le N°17', note: 'nar5' },
 
     { type: 'scene', num: 'N°18 — Final de l\'acte 2 : la désertion 🧥', persos: ['carmen', 'jose', 'zuniga', 'frasquita', 'mercedes'],
       quand: `Le narrateur dit sa phrase TOUT DE SUITE après la musique — et tout se joue PENDANT cette phrase, très vite`,
@@ -845,7 +845,13 @@
     orch2: [{ src: 'audio/12-orchestre-seul.mp3', titre: 'Orchestre seul — la musique (scène vide)' }],
     n12:   [{ src: 'audio/13-n12-chanson-boheme.mp3', titre: 'N°12 — Chanson bohème' }],
     nar3:  [{ src: 'audio/13b-narration-3.mp3', titre: '3ᵉ narration — On acclame Escamillo', vert: true }],
-    n14:   [{ src: 'audio/14-n14-toreador.mp3', titre: 'N°14 — L'air du Toréador' }]
+    n14:   [{ src: 'audio/14-n14-toreador.mp3', titre: 'N°14 — L\'air du Toréador' }],
+    nar4:  [{ src: 'audio/14b-narration-4.mp3', titre: '4ᵉ narration — Don José sort de prison', vert: true }],
+    n17:   [{ src: 'audio/15-n17-debut-duo.mp3', titre: 'N°17 — Début du duo « Je vais danser » + la Retraite' },
+            { src: 'audio/15b-n17-air-de-la-fleur.mp3', titre: 'N°17 — L\'air de la Fleur' },
+            { src: 'audio/16-n17-fin-montagne.mp3', titre: 'N°17 fin — « Là-bas dans la montagne »' }],
+    nar5:  [{ src: 'audio/16b-narration-5.mp3', titre: '5ᵉ narration — Survient le capitaine Zuniga', vert: true }],
+    n18:   [{ src: 'audio/17-n18-final-acte2.mp3', titre: 'N°18 — Final de l\'acte 2 : la désertion' }]
   };
   function blocAudio(note) {
     const liste = AUDIOS[note];
@@ -857,8 +863,8 @@
       </div>`).join('');
   }
   // Sur les cartes personnelles : la narration d'avant et celle d'après entourent la musique du moment
-  const NAR_AVANT = { n10: 'nar1', n12: 'nar2', n14: 'nar3' };
-  const NAR_APRES = { n8: 'nar1', n10: 'nar2', n12: 'nar3' };
+  const NAR_AVANT = { n10: 'nar1', n12: 'nar2', n14: 'nar3', n17: 'nar4', n18: 'nar5' };
+  const NAR_APRES = { n8: 'nar1', n10: 'nar2', n12: 'nar3', n14: 'nar4', n17: 'nar5' };
   function audioDeCarte(note) {
     if (!note) return '';
     return blocAudio(NAR_AVANT[note]) + blocAudio(note) + blocAudio(NAR_APRES[note]);
