@@ -856,6 +856,13 @@
         <audio controls preload="none" src="${a.src}"></audio>
       </div>`).join('');
   }
+  // Sur les cartes personnelles : la narration d'avant et celle d'après entourent la musique du moment
+  const NAR_AVANT = { n10: 'nar1', n12: 'nar2', n14: 'nar3' };
+  const NAR_APRES = { n8: 'nar1', n10: 'nar2', n12: 'nar3' };
+  function audioDeCarte(note) {
+    if (!note) return '';
+    return blocAudio(NAR_AVANT[note]) + blocAudio(note) + blocAudio(NAR_APRES[note]);
+  }
 
   // ================== CONSTRUCTION DE LA PAGE ==================
   function avatarsDe(persos, taille) {
@@ -999,7 +1006,7 @@
         `<div class="plan-scene" style="padding:6px 8px 2px; background:#fdf9ee;"><svg viewBox="0 25 400 240" xmlns="http://www.w3.org/2000/svg">${basePlan()}${PLANS[id].map(fleche).join('')}</svg></div>`
       ).join('');
       const noteCarte = (DETAILS_FEUILLE[roleCourant] || [])[carteIndex];
-      const audioCarte = noteCarte ? blocAudio(noteCarte) : '';
+      const audioCarte = audioDeCarte(noteCarte);
       corps = `
         <div class="carte-moment" style="border-color:${p.couleur}">
           <div class="cm-titre" style="background:${p.couleur}">🎵 ${r[0]}</div>
